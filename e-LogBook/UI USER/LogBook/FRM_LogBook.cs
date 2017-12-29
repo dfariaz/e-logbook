@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Ets2SdkClient;
 using e_LogBook.Data;
 using System.Threading.Tasks;
 
