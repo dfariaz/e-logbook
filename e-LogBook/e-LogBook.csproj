@@ -63,7 +63,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -304,10 +304,8 @@
     <Content Include="Empresas\wgcc.png" />
     <Content Include="LogoELogBook 128x128 RED.ico" />
     <Content Include="LogoELogBook 128x128.ico" />
-    <Content Include="Plugins\Novo\bin\win_x64\plugins\ets2-telemetry.dll" />
-    <Content Include="Plugins\Novo\bin\win_x86\plugins\ets2-telemetry.dll" />
-    <Content Include="Plugins\Velho\bin\win_x64\plugins\ets2-telemetry.dll" />
-    <Content Include="Plugins\Velho\bin\win_x86\plugins\ets2-telemetry.dll" />
+    <Content Include="Plugins\bin\win_x64\plugins\ets2-telemetry-server.dll" />
+    <Content Include="Plugins\bin\win_x86\plugins\ets2-telemetry-server.dll" />
     <None Include="Resources\LogoELogBook 128x128 RED.png" />
     <None Include="Resources\LogoELogBook 128x128 RED.ico" />
     <None Include="Resources\LogoELogBook 128x128.ico" />

@@ -227,7 +227,7 @@ namespace e_LogBook.UI_ADM
             {
                 if (Tools.VerificarPastaETS())//Verfica se a pasta do ETS esta padrão
                 {
-                    Tools.Copiar($@"{Application.StartupPath}\Plugins\Velho\", Tools.DiretorioPadraoETS);
+                    Tools.Copiar($@"{Application.StartupPath}\Plugins\", Tools.DiretorioPadraoETS);
 
                     MessageBox.Show("Os plugins foram instalads com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -237,7 +237,7 @@ namespace e_LogBook.UI_ADM
 
                     if (folderBrowserDialogets.ShowDialog() == DialogResult.OK)
                     {
-                        Tools.Copiar($@"{Application.StartupPath}\Plugins\Velho\", folderBrowserDialogets.SelectedPath);
+                        Tools.Copiar($@"{Application.StartupPath}\Plugins\", folderBrowserDialogets.SelectedPath);
 
                         MessageBox.Show("Os plugins foram instalads com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
