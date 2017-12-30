@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using e_LogBook.Controller;
 using e_LogBook.Properties;
+using AutoUpdaterDotNET;
+using System.Threading;
 
 namespace e_LogBook
 {
@@ -19,6 +21,8 @@ namespace e_LogBook
         public FRM_Login()
         {
             InitializeComponent();
+            // Verifica Atualizações
+            checkUpdates();
         }
 
         Optional opt = new Optional();
@@ -31,8 +35,6 @@ namespace e_LogBook
                 txtLogin.Focus();
             else
                 txtSenha.Focus();
-            // Verifica Atualizações
-            //checkUpdates();
             // Pega a versão
             lblVersao.Text = "" + Application.ProductVersion + " BETA";
         }
@@ -112,18 +114,24 @@ namespace e_LogBook
 
         private void checkUpdates()
         {
-            var result = Tools.checkUpdate();
-            if (result.Contains("Erro ao tentar fazer a requisição:"))
+            try
             {
-                MessageBox.Show("Verifique a sua conexão, para poder continuar utilizando o software", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnEntrar.Enabled = false;
+                AutoUpdater.ShowSkipButton = false;
+                AutoUpdater.ShowRemindLaterButton = false;
+                AutoUpdater.Start("http://zerohoravirtual.com/updates/autoupdate.xml");
+                AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
             }
-            else if (result != String.Empty && !result.Contains("Erro ao tentar fazer a requisição:"))
+            catch (Exception ex)
             {
-                MessageBox.Show("Atualize o Software para poder continuar utilizando!", "Atualização", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnEntrar.Enabled = false;
-                Process.Start(result);
+                MessageBox.Show(ex.HResult.ToString(), "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void AutoUpdater_ApplicationExitEvent()
+        {
+            Text = @"Closing application...";
+            Thread.Sleep(5000);
+            Application.Exit();
         }
 
         private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)

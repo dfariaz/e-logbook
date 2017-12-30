@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("e-LogBook")]
 [assembly: AssemblyDescription("Gerenciador de Cargas para ETS 2")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Zero Hora")]
+[assembly: AssemblyCompany("Zero Hora Virtual")]
 [assembly: AssemblyProduct("e-LogBook")]
 [assembly: AssemblyCopyright("Deivid Farias Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.4.0.0")]
-[assembly: AssemblyFileVersion("0.4.0.0")]
+[assembly: AssemblyVersion("0.4.2.0")]
+[assembly: AssemblyFileVersion("0.4.2.0")]
 [assembly: NeutralResourcesLanguage("pt-BR")]
 

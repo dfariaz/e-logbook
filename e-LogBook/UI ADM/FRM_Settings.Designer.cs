@@ -53,6 +53,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panelTituloC = new System.Windows.Forms.Panel();
             this.tabOthers = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtPorta = new System.Windows.Forms.TextBox();
+            this.txtServidor = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnTSServer = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnResetarSenha = new System.Windows.Forms.Button();
@@ -88,14 +96,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnSalvarEmpresa = new System.Windows.Forms.Button();
             this.folderBrowserDialogets = new System.Windows.Forms.FolderBrowserDialog();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnTSServer = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtServidor = new System.Windows.Forms.TextBox();
-            this.txtPorta = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             this.panelSysTitulo.SuspendLayout();
@@ -103,13 +109,13 @@
             this.tabColor.SuspendLayout();
             this.grupoCores.SuspendLayout();
             this.tabOthers.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabEmpty.SuspendLayout();
             this.tabManutencao.SuspendLayout();
             this.tabEmpresa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpresa)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -437,6 +443,93 @@
             this.tabOthers.Text = "Outras Configs";
             this.tabOthers.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.txtPorta);
+            this.groupBox3.Controls.Add(this.txtServidor);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.btnTSServer);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Location = new System.Drawing.Point(15, 298);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(568, 98);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Servidor TS";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(244, 57);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(105, 19);
+            this.label21.TabIndex = 14;
+            this.label21.Text = "Exemplo: 2555";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(72, 57);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(149, 19);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Exemplo: 192.168.0.1";
+            // 
+            // txtPorta
+            // 
+            this.txtPorta.Location = new System.Drawing.Point(278, 27);
+            this.txtPorta.Name = "txtPorta";
+            this.txtPorta.Size = new System.Drawing.Size(71, 27);
+            this.txtPorta.TabIndex = 13;
+            this.txtPorta.Text = "2555";
+            // 
+            // txtServidor
+            // 
+            this.txtServidor.Location = new System.Drawing.Point(81, 27);
+            this.txtServidor.Name = "txtServidor";
+            this.txtServidor.Size = new System.Drawing.Size(140, 27);
+            this.txtServidor.TabIndex = 12;
+            this.txtServidor.Text = "192.168.0.1";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(227, 30);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(48, 19);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "Porta:";
+            // 
+            // btnTSServer
+            // 
+            this.btnTSServer.FlatAppearance.BorderSize = 0;
+            this.btnTSServer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTSServer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnTSServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTSServer.Image = global::e_LogBook.Properties.Resources.btnAtualizar;
+            this.btnTSServer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTSServer.Location = new System.Drawing.Point(422, 27);
+            this.btnTSServer.Name = "btnTSServer";
+            this.btnTSServer.Size = new System.Drawing.Size(103, 45);
+            this.btnTSServer.TabIndex = 8;
+            this.btnTSServer.Text = "Atualizar";
+            this.btnTSServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTSServer.UseVisualStyleBackColor = true;
+            this.btnTSServer.Click += new System.EventHandler(this.btnTSServer_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(67, 19);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Servidor:";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label11);
@@ -662,6 +755,12 @@
             // 
             // tabManutencao
             // 
+            this.tabManutencao.Controls.Add(this.label27);
+            this.tabManutencao.Controls.Add(this.label26);
+            this.tabManutencao.Controls.Add(this.label25);
+            this.tabManutencao.Controls.Add(this.label24);
+            this.tabManutencao.Controls.Add(this.label23);
+            this.tabManutencao.Controls.Add(this.label22);
             this.tabManutencao.Controls.Add(this.btnValida);
             this.tabManutencao.Controls.Add(this.label13);
             this.tabManutencao.Location = new System.Drawing.Point(4, 28);
@@ -823,92 +922,62 @@
             this.btnSalvarEmpresa.UseVisualStyleBackColor = true;
             this.btnSalvarEmpresa.Click += new System.EventHandler(this.btnSalvarEmpresa_Click);
             // 
-            // groupBox3
+            // label22
             // 
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.txtPorta);
-            this.groupBox3.Controls.Add(this.txtServidor);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.btnTSServer);
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Location = new System.Drawing.Point(15, 298);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(568, 98);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Servidor TS";
+            this.label22.Location = new System.Drawing.Point(11, 156);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(583, 63);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Logbook é um sistema de controle de viagem com integração com o Euro Truck Simula" +
+    "tor 2 - ETS2. Ele recebe os dados da viagem e envia para o servidor da Empresa Z" +
+    "ero Hora Virtual.";
             // 
-            // btnTSServer
+            // label23
             // 
-            this.btnTSServer.FlatAppearance.BorderSize = 0;
-            this.btnTSServer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnTSServer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnTSServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTSServer.Image = global::e_LogBook.Properties.Resources.btnAtualizar;
-            this.btnTSServer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTSServer.Location = new System.Drawing.Point(422, 27);
-            this.btnTSServer.Name = "btnTSServer";
-            this.btnTSServer.Size = new System.Drawing.Size(103, 45);
-            this.btnTSServer.TabIndex = 8;
-            this.btnTSServer.Text = "Atualizar";
-            this.btnTSServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTSServer.UseVisualStyleBackColor = true;
-            this.btnTSServer.Click += new System.EventHandler(this.btnTSServer_Click);
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(11, 230);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(137, 19);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Desenvolvido Por";
             // 
-            // label19
+            // label24
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(8, 30);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(67, 19);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Servidor:";
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(39, 259);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(127, 19);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Fariaz  - Zero Hora";
             // 
-            // label18
+            // label25
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(227, 30);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(48, 19);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "Porta:";
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(39, 282);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(129, 19);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "Cunha  - Zero Hora";
             // 
-            // txtServidor
+            // label26
             // 
-            this.txtServidor.Location = new System.Drawing.Point(81, 27);
-            this.txtServidor.Name = "txtServidor";
-            this.txtServidor.Size = new System.Drawing.Size(140, 27);
-            this.txtServidor.TabIndex = 12;
-            this.txtServidor.Text = "192.168.0.1";
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(242, 230);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(100, 19);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "Mantido Por";
             // 
-            // txtPorta
+            // label27
             // 
-            this.txtPorta.Location = new System.Drawing.Point(278, 27);
-            this.txtPorta.Name = "txtPorta";
-            this.txtPorta.Size = new System.Drawing.Size(71, 27);
-            this.txtPorta.TabIndex = 13;
-            this.txtPorta.Text = "2555";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(72, 57);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(149, 19);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Exemplo: 192.168.0.1";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(244, 57);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(105, 19);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "Exemplo: 2555";
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(274, 259);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(122, 19);
+            this.label27.TabIndex = 7;
+            this.label27.Text = "Zero Hora Virtual";
             // 
             // FRM_Settings
             // 
@@ -941,6 +1010,8 @@
             this.grupoCores.PerformLayout();
             this.tabOthers.ResumeLayout(false);
             this.tabOthers.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -952,8 +1023,6 @@
             this.tabEmpresa.ResumeLayout(false);
             this.tabEmpresa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpresa)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1027,5 +1096,11 @@
         private System.Windows.Forms.TextBox txtServidor;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
     }
 }

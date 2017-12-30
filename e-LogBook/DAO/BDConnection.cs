@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using eLogBook.Data;
 
 namespace e_LogBook.DAO
 {
@@ -23,11 +24,11 @@ namespace e_LogBook.DAO
 
         private string connectionString = string.Empty;
         MySqlConnection con;
+        Class cls = new Class();
 
         public void createStringConnection()
         {
-            connectionString = @"Server=50.116.87.68;Port=3306;Database=zeroh537_LogBook_Teste;
-                      Uid=zeroh537_master; Pwd=@Logbook";
+            connectionString = cls.cString();
         }
 
         public MySqlConnection openConnection()

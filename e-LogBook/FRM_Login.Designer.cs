@@ -121,11 +121,11 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitulo.Font = new System.Drawing.Font("Calibri Light", 18F);
+            this.lblTitulo.Font = new System.Drawing.Font("Calibri Light", 20F);
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblTitulo.Location = new System.Drawing.Point(23, 13);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(64, 29);
+            this.lblTitulo.Size = new System.Drawing.Size(73, 33);
             this.lblTitulo.TabIndex = 100;
             this.lblTitulo.Text = "Login";
             // 

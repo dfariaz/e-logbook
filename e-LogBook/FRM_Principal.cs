@@ -105,9 +105,12 @@ namespace e_LogBook
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            deletaTabelaTemporaria();
-            TS3.Abort();
-            Application.Exit();
+            if (MessageBox.Show(null, "Deseja sair do eLogBook?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                deletaTabelaTemporaria();
+                TS3.Abort();
+                Application.Exit();
+            }
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

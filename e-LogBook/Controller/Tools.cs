@@ -31,45 +31,6 @@ namespace e_LogBook.Controller
             return sBuilder.ToString();
         }
 
-        public static string checkUpdate()
-        {
-            String Saida;
-
-            try
-            {
-                string versao, Link;
-
-                var request =
-                (HttpWebRequest)WebRequest.Create(@"http://cristianoprogramador.com/ZeroHoraVersao.csv");
-
-                var response = request.GetResponse();
-
-                using (Stream stream = response.GetResponseStream())
-                {
-                    var reader = new StreamReader(stream, Encoding.UTF8);
-                    var temp = (reader.ReadToEnd()).Split(',');
-
-                    versao = temp[0];
-                    Link = temp[1];
-                }
-
-                if (versao != Application.ProductVersion)
-                {
-                    Saida = Link;
-                }
-                else
-                {
-                    Saida = string.Empty;
-                }
-            }
-            catch (Exception ex)
-            {
-                Saida = string.Format("Erro ao tentar fazer a requisição: {0}", ex.Message);
-            }
-
-            return Saida;
-        }
-
         public static string DiretorioPadraoETS = @"C:\Program Files (x86)\Steam\steamapps\Common\Euro Truck Simulator 2";
 
         public static bool VerificarPastaETS()
