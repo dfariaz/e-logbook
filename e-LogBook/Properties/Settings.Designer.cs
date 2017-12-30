@@ -118,5 +118,17 @@ namespace e_LogBook.Properties {
                 this["cargaEntregue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("null")]
+        public string tabelaTemporary {
+            get {
+                return ((string)(this["tabelaTemporary"]));
+            }
+            set {
+                this["tabelaTemporary"] = value;
+            }
+        }
     }
 }

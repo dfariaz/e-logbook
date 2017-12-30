@@ -29,9 +29,11 @@ namespace e_LogBook
         public string public_login { get; set; }
         private int empresa_id, usuario_id, admin, acmClick = 0;
         private string versao = "BETA";
+        private string nomeUsuario, dataUsuario, horaUsuario, NomeTabela;
         Thread TS3;
 
         Optional opt = new Optional();
+        Defaults drv = new Defaults();
         LoginController dft = new LoginController();
 
         private void FRM_Principal_Load(object sender, EventArgs e)
@@ -39,23 +41,45 @@ namespace e_LogBook
             if (versao != "BETA")
                 lblVERSAOBETA.Visible = false;
             else
+            {
+                lblVERSAOBETA.Text = "VERSÃO BETA: " + Application.ProductVersion;
                 lblVERSAOBETA.Visible = true;
+            }
 
             if (!this.public_login.Equals(""))
                 getInformation(public_login);
             if (admin == 1)
             {
-                btnAdm.Visible = true;
                 lblAdmin.Visible = true;
             }
             else
+            {
+                btnControle.Visible = false;
+                btnConfiguracoes.Visible = false;
                 lblAdmin.Visible = false;
+            }
             //Salva as cores no settings
             opt.saveSettingsColors(empresa_id);
             changeColors();
 
             TS3 = new Thread(new ThreadStart(TSOpen));
             TS3.Start();
+            criaTabelaTemporaria();
+        }
+
+        private void criaTabelaTemporaria()
+        {
+            dataUsuario = DateTime.Now.Day.ToString()+DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
+            horaUsuario = DateTime.Now.Hour.ToString()+ DateTime.Now.Minute.ToString();
+            NomeTabela = "" + nomeUsuario + "" + dataUsuario + "" + horaUsuario+"TEMPORARY";
+            Settings.Default.tabelaTemporary = NomeTabela;
+            Settings.Default.Save();
+            string _result = drv.createTable(NomeTabela);
+        }
+
+        private void deletaTabelaTemporaria()
+        {
+            string _result = drv.deleteTable(NomeTabela);
         }
 
         #region MOVE FORM
@@ -81,6 +105,7 @@ namespace e_LogBook
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
+            deletaTabelaTemporaria();
             TS3.Abort();
             Application.Exit();
         }
@@ -90,23 +115,52 @@ namespace e_LogBook
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btnAdm_Click(object sender, EventArgs e)
+        private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            if (admin == 1)
+            this.WindowState = FormWindowState.Maximized; 
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            FRM_DriverAccount drv = new FRM_DriverAccount();
+            drv.public_login = usuario_id;
+            drv.Show();
+        }
+
+        private void btnLogBook_Click(object sender, EventArgs e)
+        {
+            FRM_LogBook log = new FRM_LogBook();
+            log.LMotorista = usuario_id;
+            log.LEmpresa = empresa_id;
+            if(log.ShowDialog() == DialogResult.Cancel)
             {
-                if (acmClick == 0)
-                {
-                    listaDados.Visible = true;
-                    acmClick = 1;
-                }
-                else
-                {
-                    listaDados.Visible = false;
-                    acmClick = 0;
-                }
+                string comandos = "" + NomeTabela + " ORDER BY ID DESC";
+                DataTable _dt = drv.select("*", comandos);
+                var _bs = new BindingSource();
+                _bs.DataSource = _dt;
+                dgvLogBook.DataSource = _bs;
             }
-            else
-                MessageBox.Show(null, "Somente administradores tem acesso a esta opção!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        }
+
+        private void btnEmpresas_Click(object sender, EventArgs e)
+        {
+            FRM_Company com = new FRM_Company();
+            com.Show();
+        }
+
+        private void btnControle_Click(object sender, EventArgs e)
+        {
+            FRM_DriverControl drv = new FRM_DriverControl();
+            drv.public_empresa = empresa_id;
+            drv.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FRM_Settings stt = new FRM_Settings();
+            stt.public_setting = "";
+            stt.public_login = public_login;
+            stt.ShowDialog();
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
@@ -118,62 +172,6 @@ namespace e_LogBook
             stt.ShowDialog();
         }
 
-        private void btnInformacoes_Click(object sender, EventArgs e)
-        {
-            FRM_DriverAccount drv = new FRM_DriverAccount();
-            drv.public_login = usuario_id;
-            drv.Show();
-        }
-
-        private void btnEmpresa_Click(object sender, EventArgs e)
-        {
-            FRM_Company com = new FRM_Company();
-            com.Show();
-        }
-
-        private void btnLog_Click(object sender, EventArgs e)
-        {
-            Settings.Default.cargaEntregue = false;
-            Settings.Default.LogBook = true;
-            Settings.Default.Save();
-            //bool close = Settings.Default.LogBook;
-            FRM_LogBook log = new FRM_LogBook();
-            log.LMotorista = usuario_id;
-            log.LEmpresa = empresa_id;
-            log.ShowDialog();
-            //close = Settings.Default.LogBook;
-            //if (close)
-            //{
-            //    timerLogBook.Interval = 45000;
-            //    timerLogBook.Start();
-            //}
-        }
-
-        private void timerLogBook_Tick(object sender, EventArgs e)
-        {
-            Settings.Default.LogBook = true;
-            timerLogBook.Stop();
-            btnLog.PerformClick();
-        }
-
-        private void listaDados_Click(object sender, EventArgs e)
-        {
-            string listaSelec = listaDados.SelectedItem.ToString();
-            if(listaSelec != "Configurações")
-            {
-                FRM_DriverControl drv = new FRM_DriverControl();
-                drv.public_empresa = empresa_id;
-                drv.ShowDialog();
-            }
-            else
-            {
-                FRM_Settings stt = new FRM_Settings();
-                stt.public_setting = "";
-                stt.public_login = public_login;
-                stt.ShowDialog();
-            }
-        }
-
         private void getInformation(string login)
         {
             DataTable _dt = dft.getInformation(login);
@@ -181,6 +179,7 @@ namespace e_LogBook
             {
                 empresa_id = Convert.ToInt32(dr["IDEmpresa"]);
                 usuario_id = Convert.ToInt32(dr["ID"]);
+                nomeUsuario = dr["Login"].ToString();
                 admin = Convert.ToInt32(dr["Grupo"]);
                 lblNomeMotorista.Text = dr["Nome"].ToString() + "!";
             }
@@ -210,6 +209,7 @@ namespace e_LogBook
             else
                 return false;
         }
+
 
         private int _result = 2;
         private void TSOpen()
@@ -246,6 +246,7 @@ namespace e_LogBook
             panelTitulo.BackColor = (Color)nome.ConvertFromString(Settings.Default.colorTitulo);
             lblTitulo.ForeColor = (Color)nome.ConvertFromString(Settings.Default.colorFonte);
             lblSysTitulo.ForeColor = (Color)nome.ConvertFromString(Settings.Default.colorFonte);
+            panelMenu.BackColor = (Color)nome.ConvertFromString(Settings.Default.colorTitulo);
         }
 
         #endregion

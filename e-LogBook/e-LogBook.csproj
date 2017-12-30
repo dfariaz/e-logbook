@@ -306,6 +306,7 @@
     <Content Include="LogoELogBook 128x128.ico" />
     <Content Include="Plugins\bin\win_x64\plugins\ets2-telemetry-server.dll" />
     <Content Include="Plugins\bin\win_x86\plugins\ets2-telemetry-server.dll" />
+    <None Include="Resources\btnMaximizar.png" />
     <None Include="Resources\LogoELogBook 128x128 RED.png" />
     <None Include="Resources\LogoELogBook 128x128 RED.ico" />
     <None Include="Resources\LogoELogBook 128x128.ico" />

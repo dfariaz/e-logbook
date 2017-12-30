@@ -37,14 +37,14 @@ namespace e_LogBook.UI_USER.LogBook
         public int LEmpresa { get; set; }
 
         //Privadas
-        private string cidadeInicial, cidadeDestino, carga, data;
+        private string cidadeInicial, cidadeDestino, carga, data, enviado;
         private String idCarreta = String.Empty;
         private float VelocidadeAtual = 0;
         private double v_OdometroInicial, dano, pontuacao;
-        private int IDMotorista, IDEmpresa, ControleVelocidade = 0;
+        private int IDMotorista, IDEmpresa, ControleVelocidade = 0, JogoFechado = 0;
         private uint kmRodado;
-        private bool infoIniciais = false, infoFinais = false, cargaAcoplada = false;
-        Task LOGBOOKthread;
+        private bool infoIniciais = false, infoFinais = false, cargaAcoplada = false, flag = false;
+        Task LOGBOOKthread, LOGBOOKDGV;
 
         private void FRM_LogBook_Load(object sender, EventArgs e)
         {
@@ -59,8 +59,7 @@ namespace e_LogBook.UI_USER.LogBook
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Settings.Default.LogBook = false;
-            Settings.Default.Save();
+            PararLogBook();
             this.Close();
         }
 
@@ -81,6 +80,11 @@ namespace e_LogBook.UI_USER.LogBook
             Ponto.Y = this.Top - MousePosition.Y;
         }
 
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            IniciarLogBook();
+        }
+
         private void FRM_LogBook_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != System.Windows.Forms.MouseButtons.Left)
@@ -92,25 +96,21 @@ namespace e_LogBook.UI_USER.LogBook
         CancellationTokenSource source = new CancellationTokenSource();
         CancellationToken token;
 
-        private async void btnIniciar_Click(object sender, EventArgs e)
+        private async void IniciarLogBook()
         {
             token = source.Token;
             await Iniciar(token);
-            //LOGBOOKthread = new Task(new Action (readData));
-            //LOGBOOKthread.Start();
         }
 
         public async Task Iniciar(CancellationToken token)
         {
-            LOGBOOKthread = Task.Run(() =>
-            {
-                readData();
-            }, token);
+            if(JogoFechado == 0)
+                LOGBOOKthread = Task.Run(() => { readData(); }, token);
         }
 
-        private void btnParar_Click(object sender, EventArgs e)
+        private void PararLogBook()
         {
-            if (source != null) 
+            if (source != null)
             {
                 source.Cancel();
             }
@@ -126,29 +126,7 @@ namespace e_LogBook.UI_USER.LogBook
             // Pinta o padrão do formulário
             panelSysTitulo.BackColor = (Color)nome.ConvertFromString(Settings.Default.colorEBook);
             panelTitulo.BackColor = (Color)nome.ConvertFromString(Settings.Default.colorTitulo);
-            lblTitulo.ForeColor = (Color)nome.ConvertFromString(Settings.Default.colorFonte);
             lblSysTitulo.ForeColor = (Color)nome.ConvertFromString(Settings.Default.colorFonte);
-        }
-
-        #endregion
-
-        #region ICONES EMPRESA 
-
-        private void SetarIconeDasEmpresas(string p_EmpresaPartida, string p_EmpresaDestino)
-        {
-            var CaminhoDasImagens = String.Format(@"{0}\Empresas", Application.StartupPath);
-            var CaminhoImgPartida = String.Format(@"{0}\{1}.png", CaminhoDasImagens, p_EmpresaPartida.Trim().ToLower());
-            var CaminhoImgDestino = String.Format(@"{0}\{1}.png", CaminhoDasImagens, p_EmpresaDestino.Trim().ToLower());
-
-            if (File.Exists(CaminhoImgPartida))
-            {
-                img_EmpresaPartida.ImageLocation = CaminhoImgPartida;
-            }
-
-            if (File.Exists(CaminhoImgDestino))
-            {
-                img_EmpresaDestino.ImageLocation = CaminhoImgDestino;
-            }
         }
 
         #endregion
@@ -179,19 +157,12 @@ namespace e_LogBook.UI_USER.LogBook
         {
             var VelocidadeTemp = 0;
             var multaBase = new Multa();
-
             VelocidadeTemp = Convert.ToInt32(Math.Round(VelocidadeAtual, 1));
-
             multaBase.IDMotorista = IDMotorista;
             multaBase.DataDaMulta = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             multaBase.Velocidade = VelocidadeTemp;
             opt.AdicionarNovaMulta(multaBase);
-
-            Thread.Sleep(1000);
-
             ControllerAudio.ExecutarAudio(ControllerAudio.Audios.Velocidade);
-
-            Thread.Sleep(1000);
         }
 
         #endregion
@@ -209,6 +180,7 @@ namespace e_LogBook.UI_USER.LogBook
                 string _resultado = drv.saveFreight(kmRodado, dano, pontuacao, carga, cidadeInicial, cidadeDestino, data, IDMotorista, IDEmpresa);
                 if (_resultado == "true")
                 {
+                    enviado = "Enviado";
                     ControllerAudio.ExecutarAudio(ControllerAudio.Audios.Entregue);
                 }
                 else if (_resultado == "rankingFalse")
@@ -226,16 +198,13 @@ namespace e_LogBook.UI_USER.LogBook
             cidadeInicial = "";
             cidadeDestino = "";
             carga = "";
-            lblDestino.Text = "";
-            lblPartida.Text = "";
             pontuacao = 0;
             dano = 0;
             VelocidadeAtual = 0;
             ControleVelocidade = 0;
             infoIniciais = false;
             infoFinais = false;
-            img_EmpresaDestino.Image = null;
-            img_EmpresaPartida.Image = null;
+            flag = false;
         }
 
         private async void readData()
@@ -243,10 +212,10 @@ namespace e_LogBook.UI_USER.LogBook
             try
             {
                 bool gStatus = this.gameStatus();
-                bool flag = false;
                 IEts2TelemetryData ets2TelemetryData = Ets2TelemetryDataReader.Instance.Read();
                 if (ets2TelemetryData.Game.Connected)
                 {
+                    JogoFechado = 0;
                     VelocidadeAtual = ets2TelemetryData.Truck.Speed;
 
                     if (!string.IsNullOrWhiteSpace(ets2TelemetryData.Job.DestinationCity))
@@ -261,12 +230,7 @@ namespace e_LogBook.UI_USER.LogBook
                                 cidadeInicial = ets2TelemetryData.Job.SourceCity;
                                 cidadeDestino = ets2TelemetryData.Job.DestinationCity;
                                 carga = String.Format("{0} {1}t", ets2TelemetryData.Trailer.Name.ToString(), (ets2TelemetryData.Trailer.Mass / 1000f).ToString());
-                                lblDestino.Text = cidadeDestino;
-                                lblPartida.Text = cidadeInicial;
                                 cargaAcoplada = true;
-
-                                SetarIconeDasEmpresas(ets2TelemetryData.Job.SourceCompany, ets2TelemetryData.Job.DestinationCompany);
-                                PicCarga.Image = Properties.Resources.Carregado;
                                 // Ignora informações iniciais ao iniciar a carga.
 
                                 if (Tools.VerificarETS2MP() == false)
@@ -280,32 +244,35 @@ namespace e_LogBook.UI_USER.LogBook
                                     opt.LimparListaDeMultas();
                                     infoIniciais = true;
                                 }
-                            }                            
-                        }
-
-                        if (ets2TelemetryData.Navigation.EstimatedDistance == 0 && !ets2TelemetryData.Trailer.Attached)
-                        {
-                            infoFinais = true;
-                            if (infoFinais && flag)
-                            {
-                                kmRodado = Convert.ToUInt32(ets2TelemetryData.Truck.Odometer - v_OdometroInicial);
-
-                                double danoTruck = ets2TelemetryData.Truck.WearCabin + ets2TelemetryData.Truck.WearChassis;
-                                danoTruck = danoTruck + ets2TelemetryData.Truck.WearEngine + ets2TelemetryData.Truck.WearTransmission;
-                                danoTruck = danoTruck + ets2TelemetryData.Truck.WearWheels;
-                                double danoTrailer = ets2TelemetryData.Trailer.Wear;
-
-                                pontuacao = opt.CalcularPontuacao(danoTrailer, opt.ObterNumeroDeMultas(), kmRodado);
-                                dano = danoTrailer * 100;
-                                pontuacao = Math.Round(pontuacao, 1);
-                                PicCarga.Image = Properties.Resources.Descarregado;
-                                cargaAcoplada = false;
-                                FinalizarFrete();
                             }
                         }
-
-                        //lblVelDis.Text = String.Format("Velocidade {0}", VelocidadeAtual.ToString("0"));
                     }
+
+                    if (ets2TelemetryData.Navigation.EstimatedDistance == 0 && !ets2TelemetryData.Trailer.Attached)
+                    {
+                        infoFinais = true;
+                        if (infoFinais && flag)
+                        {
+                            kmRodado = Convert.ToUInt32(ets2TelemetryData.Truck.Odometer - v_OdometroInicial);
+
+                            double danoTruck = ets2TelemetryData.Truck.WearCabin + ets2TelemetryData.Truck.WearChassis;
+                            danoTruck = danoTruck + ets2TelemetryData.Truck.WearEngine + ets2TelemetryData.Truck.WearTransmission;
+                            danoTruck = danoTruck + ets2TelemetryData.Truck.WearWheels;
+                            double danoTrailer = ets2TelemetryData.Trailer.Wear;
+
+                            pontuacao = opt.CalcularPontuacao(danoTrailer, opt.ObterNumeroDeMultas(), kmRodado);
+                            dano = danoTrailer * 100;
+                            pontuacao = Math.Round(pontuacao, 1);
+                            cargaAcoplada = false;
+                            FinalizarFrete();
+                            //Preenche DataTable 
+                        }
+                    }
+                }
+                else
+                {
+                    JogoFechado = 1;
+                    PararLogBook();
                 }
                 await Task.Delay(1000);
                 await Iniciar(token);

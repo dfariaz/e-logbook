@@ -38,20 +38,21 @@
             this.panelSysTitulo = new System.Windows.Forms.Panel();
             this.lblSysTitulo = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnEmpresa = new System.Windows.Forms.Button();
-            this.btnAdm = new System.Windows.Forms.Button();
-            this.btnLog = new System.Windows.Forms.Button();
-            this.btnInformacoes = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.lblVERSAOBETA = new System.Windows.Forms.Label();
-            this.listaDados = new System.Windows.Forms.ListBox();
             this.lblAdmin = new System.Windows.Forms.Label();
             this.lblNomeMotorista = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.timerLogBook = new System.Windows.Forms.Timer(this.components);
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnConfiguracoes = new System.Windows.Forms.Button();
+            this.btnEmpresas = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
+            this.btnControle = new System.Windows.Forms.Button();
+            this.btnLogBook = new System.Windows.Forms.Button();
+            this.dgvLogBook = new System.Windows.Forms.DataGridView();
             this.panelTitulo.SuspendLayout();
             this.panelSysTitulo.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLogBook)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitulo
@@ -65,13 +66,14 @@
             this.panelTitulo.Controls.Add(this.lblTitulo);
             this.panelTitulo.Location = new System.Drawing.Point(188, -1);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(409, 54);
+            this.panelTitulo.Size = new System.Drawing.Size(747, 54);
             this.panelTitulo.TabIndex = 7;
             this.panelTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FRM_Principal_MouseDown);
             this.panelTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FRM_Principal_MouseMove);
             // 
             // btnFechar
             // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.BackColor = System.Drawing.Color.Transparent;
             this.btnFechar.BackgroundImage = global::e_LogBook.Properties.Resources.btnFechar;
             this.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -79,7 +81,7 @@
             this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFechar.Location = new System.Drawing.Point(361, 11);
+            this.btnFechar.Location = new System.Drawing.Point(703, 12);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(30, 30);
             this.btnFechar.TabIndex = 3;
@@ -89,6 +91,7 @@
             // 
             // btnMinimizar
             // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.BackgroundImage = global::e_LogBook.Properties.Resources.btnMinimizar;
             this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -96,7 +99,7 @@
             this.btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimizar.Location = new System.Drawing.Point(320, 11);
+            this.btnMinimizar.Location = new System.Drawing.Point(667, 12);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(30, 30);
             this.btnMinimizar.TabIndex = 2;
@@ -106,6 +109,7 @@
             // 
             // btnConfig
             // 
+            this.btnConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfig.BackColor = System.Drawing.Color.Transparent;
             this.btnConfig.BackgroundImage = global::e_LogBook.Properties.Resources.btnConfigurações;
             this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -114,7 +118,7 @@
             this.btnConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfig.Location = new System.Drawing.Point(245, 8);
+            this.btnConfig.Location = new System.Drawing.Point(621, 8);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(40, 40);
             this.btnConfig.TabIndex = 1;
@@ -153,130 +157,25 @@
             this.lblSysTitulo.TabIndex = 0;
             this.lblSysTitulo.Text = "e-LogBook";
             // 
-            // btnEmpresa
-            // 
-            this.btnEmpresa.BackColor = System.Drawing.Color.Transparent;
-            this.btnEmpresa.BackgroundImage = global::e_LogBook.Properties.Resources.btnEmpresa;
-            this.btnEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEmpresa.FlatAppearance.BorderSize = 0;
-            this.btnEmpresa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEmpresa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpresa.Location = new System.Drawing.Point(204, 19);
-            this.btnEmpresa.Name = "btnEmpresa";
-            this.btnEmpresa.Size = new System.Drawing.Size(76, 77);
-            this.btnEmpresa.TabIndex = 3;
-            this.toolTip.SetToolTip(this.btnEmpresa, "Empresa");
-            this.btnEmpresa.UseVisualStyleBackColor = false;
-            this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
-            // 
-            // btnAdm
-            // 
-            this.btnAdm.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdm.BackgroundImage = global::e_LogBook.Properties.Resources.btnAdmin;
-            this.btnAdm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdm.FlatAppearance.BorderSize = 0;
-            this.btnAdm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAdm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAdm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdm.Location = new System.Drawing.Point(29, 195);
-            this.btnAdm.Name = "btnAdm";
-            this.btnAdm.Size = new System.Drawing.Size(76, 77);
-            this.btnAdm.TabIndex = 2;
-            this.toolTip.SetToolTip(this.btnAdm, "Painel Administrativo");
-            this.btnAdm.UseVisualStyleBackColor = false;
-            this.btnAdm.Visible = false;
-            this.btnAdm.Click += new System.EventHandler(this.btnAdm_Click);
-            // 
-            // btnLog
-            // 
-            this.btnLog.BackColor = System.Drawing.Color.Transparent;
-            this.btnLog.BackgroundImage = global::e_LogBook.Properties.Resources.btnLogBook;
-            this.btnLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLog.FlatAppearance.BorderSize = 0;
-            this.btnLog.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnLog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLog.Location = new System.Drawing.Point(115, 19);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(76, 77);
-            this.btnLog.TabIndex = 1;
-            this.toolTip.SetToolTip(this.btnLog, "Log BooK");
-            this.btnLog.UseVisualStyleBackColor = false;
-            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
-            // 
-            // btnInformacoes
-            // 
-            this.btnInformacoes.BackColor = System.Drawing.Color.Transparent;
-            this.btnInformacoes.BackgroundImage = global::e_LogBook.Properties.Resources.btnInfo;
-            this.btnInformacoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnInformacoes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInformacoes.FlatAppearance.BorderSize = 0;
-            this.btnInformacoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnInformacoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnInformacoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInformacoes.Location = new System.Drawing.Point(27, 19);
-            this.btnInformacoes.Name = "btnInformacoes";
-            this.btnInformacoes.Size = new System.Drawing.Size(76, 77);
-            this.btnInformacoes.TabIndex = 0;
-            this.toolTip.SetToolTip(this.btnInformacoes, "Minhas informações");
-            this.btnInformacoes.UseVisualStyleBackColor = false;
-            this.btnInformacoes.Click += new System.EventHandler(this.btnInformacoes_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::e_LogBook.Properties.Resources.Principal;
-            this.panel1.Controls.Add(this.lblVERSAOBETA);
-            this.panel1.Controls.Add(this.listaDados);
-            this.panel1.Controls.Add(this.lblAdmin);
-            this.panel1.Controls.Add(this.lblNomeMotorista);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnEmpresa);
-            this.panel1.Controls.Add(this.btnAdm);
-            this.panel1.Controls.Add(this.btnLog);
-            this.panel1.Controls.Add(this.btnInformacoes);
-            this.panel1.Location = new System.Drawing.Point(-1, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(598, 300);
-            this.panel1.TabIndex = 8;
-            // 
             // lblVERSAOBETA
             // 
             this.lblVERSAOBETA.AutoSize = true;
             this.lblVERSAOBETA.BackColor = System.Drawing.Color.Transparent;
             this.lblVERSAOBETA.Font = new System.Drawing.Font("Calibri Light", 16F);
             this.lblVERSAOBETA.ForeColor = System.Drawing.Color.Red;
-            this.lblVERSAOBETA.Location = new System.Drawing.Point(276, 111);
+            this.lblVERSAOBETA.Location = new System.Drawing.Point(450, 62);
             this.lblVERSAOBETA.Name = "lblVERSAOBETA";
             this.lblVERSAOBETA.Size = new System.Drawing.Size(117, 27);
             this.lblVERSAOBETA.TabIndex = 11;
             this.lblVERSAOBETA.Text = "Versão Beta";
             this.lblVERSAOBETA.Visible = false;
             // 
-            // listaDados
-            // 
-            this.listaDados.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listaDados.FormattingEnabled = true;
-            this.listaDados.ItemHeight = 19;
-            this.listaDados.Items.AddRange(new object[] {
-            "Controle de Motoristas",
-            "Configurações"});
-            this.listaDados.Location = new System.Drawing.Point(115, 194);
-            this.listaDados.Name = "listaDados";
-            this.listaDados.Size = new System.Drawing.Size(210, 78);
-            this.listaDados.TabIndex = 10;
-            this.listaDados.Visible = false;
-            this.listaDados.Click += new System.EventHandler(this.listaDados_Click);
-            // 
             // lblAdmin
             // 
             this.lblAdmin.AutoSize = true;
             this.lblAdmin.BackColor = System.Drawing.Color.Transparent;
             this.lblAdmin.ForeColor = System.Drawing.Color.SeaGreen;
-            this.lblAdmin.Location = new System.Drawing.Point(25, 139);
+            this.lblAdmin.Location = new System.Drawing.Point(199, 90);
             this.lblAdmin.Name = "lblAdmin";
             this.lblAdmin.Size = new System.Drawing.Size(51, 19);
             this.lblAdmin.TabIndex = 8;
@@ -289,7 +188,7 @@
             this.lblNomeMotorista.BackColor = System.Drawing.Color.Transparent;
             this.lblNomeMotorista.Font = new System.Drawing.Font("Calibri Light", 18F);
             this.lblNomeMotorista.ForeColor = System.Drawing.Color.SeaGreen;
-            this.lblNomeMotorista.Location = new System.Drawing.Point(141, 110);
+            this.lblNomeMotorista.Location = new System.Drawing.Point(315, 61);
             this.lblNomeMotorista.Name = "lblNomeMotorista";
             this.lblNomeMotorista.Size = new System.Drawing.Size(116, 29);
             this.lblNomeMotorista.TabIndex = 7;
@@ -301,26 +200,156 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri Light", 18F);
             this.label1.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label1.Location = new System.Drawing.Point(24, 110);
+            this.label1.Location = new System.Drawing.Point(198, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 29);
             this.label1.TabIndex = 6;
             this.label1.Text = "Bem vindo,";
             // 
-            // timerLogBook
+            // panelMenu
             // 
-            this.timerLogBook.Interval = 45000;
-            this.timerLogBook.Tick += new System.EventHandler(this.timerLogBook_Tick);
+            this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelMenu.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelMenu.Controls.Add(this.btnConfiguracoes);
+            this.panelMenu.Controls.Add(this.btnEmpresas);
+            this.panelMenu.Controls.Add(this.btnInfo);
+            this.panelMenu.Controls.Add(this.btnControle);
+            this.panelMenu.Controls.Add(this.btnLogBook);
+            this.panelMenu.Location = new System.Drawing.Point(-1, 53);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(189, 432);
+            this.panelMenu.TabIndex = 9;
+            // 
+            // btnConfiguracoes
+            // 
+            this.btnConfiguracoes.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfiguracoes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfiguracoes.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConfiguracoes.FlatAppearance.BorderSize = 0;
+            this.btnConfiguracoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConfiguracoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnConfiguracoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguracoes.Font = new System.Drawing.Font("Calibri Light", 16F);
+            this.btnConfiguracoes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnConfiguracoes.Location = new System.Drawing.Point(13, 244);
+            this.btnConfiguracoes.Name = "btnConfiguracoes";
+            this.btnConfiguracoes.Size = new System.Drawing.Size(165, 49);
+            this.btnConfiguracoes.TabIndex = 5;
+            this.btnConfiguracoes.Text = "Configurações";
+            this.btnConfiguracoes.UseVisualStyleBackColor = false;
+            this.btnConfiguracoes.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnEmpresas
+            // 
+            this.btnEmpresas.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmpresas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmpresas.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEmpresas.FlatAppearance.BorderSize = 0;
+            this.btnEmpresas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEmpresas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEmpresas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmpresas.Font = new System.Drawing.Font("Calibri Light", 16F);
+            this.btnEmpresas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEmpresas.Location = new System.Drawing.Point(13, 127);
+            this.btnEmpresas.Name = "btnEmpresas";
+            this.btnEmpresas.Size = new System.Drawing.Size(165, 49);
+            this.btnEmpresas.TabIndex = 4;
+            this.btnEmpresas.Text = "Empresa";
+            this.btnEmpresas.UseVisualStyleBackColor = false;
+            this.btnEmpresas.Click += new System.EventHandler(this.btnEmpresas_Click);
+            // 
+            // btnInfo
+            // 
+            this.btnInfo.BackColor = System.Drawing.Color.Transparent;
+            this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInfo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnInfo.FlatAppearance.BorderSize = 0;
+            this.btnInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfo.Font = new System.Drawing.Font("Calibri Light", 16F);
+            this.btnInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInfo.Location = new System.Drawing.Point(13, 8);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(165, 49);
+            this.btnInfo.TabIndex = 3;
+            this.btnInfo.Text = "Perfil";
+            this.btnInfo.UseVisualStyleBackColor = false;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
+            // btnControle
+            // 
+            this.btnControle.BackColor = System.Drawing.Color.Transparent;
+            this.btnControle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnControle.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnControle.FlatAppearance.BorderSize = 0;
+            this.btnControle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnControle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnControle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnControle.Font = new System.Drawing.Font("Calibri Light", 16F);
+            this.btnControle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnControle.Location = new System.Drawing.Point(13, 185);
+            this.btnControle.Name = "btnControle";
+            this.btnControle.Size = new System.Drawing.Size(165, 49);
+            this.btnControle.TabIndex = 2;
+            this.btnControle.Text = "Controle";
+            this.btnControle.UseVisualStyleBackColor = false;
+            this.btnControle.Click += new System.EventHandler(this.btnControle_Click);
+            // 
+            // btnLogBook
+            // 
+            this.btnLogBook.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogBook.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogBook.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLogBook.FlatAppearance.BorderSize = 0;
+            this.btnLogBook.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLogBook.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnLogBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogBook.Font = new System.Drawing.Font("Calibri Light", 16F);
+            this.btnLogBook.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLogBook.Location = new System.Drawing.Point(13, 68);
+            this.btnLogBook.Name = "btnLogBook";
+            this.btnLogBook.Size = new System.Drawing.Size(165, 49);
+            this.btnLogBook.TabIndex = 1;
+            this.btnLogBook.Text = "Log Book";
+            this.btnLogBook.UseVisualStyleBackColor = false;
+            this.btnLogBook.Click += new System.EventHandler(this.btnLogBook_Click);
+            // 
+            // dgvLogBook
+            // 
+            this.dgvLogBook.AllowUserToAddRows = false;
+            this.dgvLogBook.AllowUserToDeleteRows = false;
+            this.dgvLogBook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvLogBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLogBook.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvLogBook.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvLogBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLogBook.ColumnHeadersVisible = false;
+            this.dgvLogBook.GridColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvLogBook.Location = new System.Drawing.Point(203, 121);
+            this.dgvLogBook.Name = "dgvLogBook";
+            this.dgvLogBook.ReadOnly = true;
+            this.dgvLogBook.Size = new System.Drawing.Size(708, 351);
+            this.dgvLogBook.TabIndex = 12;
             // 
             // FRM_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(595, 352);
+            this.ClientSize = new System.Drawing.Size(933, 483);
             this.ControlBox = false;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgvLogBook);
+            this.Controls.Add(this.lblVERSAOBETA);
+            this.Controls.Add(this.panelMenu);
+            this.Controls.Add(this.lblAdmin);
+            this.Controls.Add(this.lblNomeMotorista);
             this.Controls.Add(this.panelTitulo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panelSysTitulo);
             this.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -334,9 +363,10 @@
             this.panelTitulo.PerformLayout();
             this.panelSysTitulo.ResumeLayout(false);
             this.panelSysTitulo.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLogBook)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -346,21 +376,21 @@
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panelSysTitulo;
         private System.Windows.Forms.Label lblSysTitulo;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnInformacoes;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Button btnLog;
-        private System.Windows.Forms.Button btnAdm;
         private System.Windows.Forms.Button btnConfig;
-        private System.Windows.Forms.Button btnEmpresa;
         private System.Windows.Forms.Label lblNomeMotorista;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Label lblAdmin;
-        private System.Windows.Forms.ListBox listaDados;
         private System.Windows.Forms.Label lblVERSAOBETA;
-        private System.Windows.Forms.Timer timerLogBook;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button btnConfiguracoes;
+        private System.Windows.Forms.Button btnEmpresas;
+        private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.Button btnControle;
+        private System.Windows.Forms.Button btnLogBook;
+        private System.Windows.Forms.DataGridView dgvLogBook;
     }
 }
 

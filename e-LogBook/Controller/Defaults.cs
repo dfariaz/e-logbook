@@ -287,5 +287,112 @@ namespace e_LogBook.Controller
             }
         }
         #endregion
+
+        #region CREATE AND DELETE
+        public string createTable(string nome)
+        {
+            bdc.closeConnection();
+            try
+            {
+                _sql = "CREATE TABLE " + nome + " (";
+                _sql += "`ID` int(11) NOT NULL AUTO_INCREMENT,";
+                _sql += "`Data do Frete` DATE NULL,";
+                _sql += "`Cidade Inicial` VARCHAR(90) NULL,";
+                _sql += "`Cidade Destino` VARCHAR(90) NULL,";
+                _sql += "`Carga` VARCHAR(90) NULL,";
+                _sql += "`KM Rodado` double NULL,";
+                _sql += "`Dano` double NULL,";
+                _sql += "`Pontos` double NULL,";
+                _sql += "`Status` VARCHAR(90) NULL,";
+                _sql += "PRIMARY KEY(`ID`));";
+                _mCMD = new MySqlCommand(_sql, bdc.openConnection());
+                int _vCMD = _mCMD.ExecuteNonQuery();
+                if (_vCMD == 0)
+                {
+                    rtrInsert = "true";
+                    return rtrInsert;
+                }
+                else
+                {
+                    rtrInsert = "false";
+                    return rtrInsert;
+                }
+            }
+            catch (MySqlException mysql)
+            {
+                rtrUpdate = mysql.Number.ToString();
+                return rtrUpdate;
+            }
+            catch (Exception ex)
+            {
+                rtrUpdate = ex.HResult.ToString();
+                return rtrUpdate;
+            }
+        }
+
+        public string deleteTable(string nome)
+        {
+            bdc.closeConnection();
+            try
+            {
+                _sql = "DROP TABLE " + nome + ";";
+                _mCMD = new MySqlCommand(_sql, bdc.openConnection());
+                int _vCMD = _mCMD.ExecuteNonQuery();
+                if (_vCMD == 1)
+                {
+                    rtrInsert = "true";
+                    return rtrInsert;
+                }
+                else
+                {
+                    rtrInsert = "false";
+                    return rtrInsert;
+                }
+            }
+            catch (MySqlException mysql)
+            {
+                rtrUpdate = mysql.Number.ToString();
+                return rtrUpdate;
+            }
+            catch (Exception ex)
+            {
+                rtrUpdate = ex.HResult.ToString();
+                return rtrUpdate;
+            }
+        }
+
+        public string InsertFreteTemporary(string tabela, uint kmrodado, double dano, double pontuacao, string carga, string cityinicio, string citydestino, string datafinalfrete)
+        {
+            bdc.closeConnection();
+            try
+            {
+                _sql = "INSERT INTO " + tabela + " (`Data do Frete`, `Cidade Inicial`, `Cidade Destino`, `Carga`, `KM Rodado`, `Dano`, `Pontos`, `Status`) VALUES ('" + datafinalfrete + "', '" + cityinicio + "', '" + citydestino + "', '" + carga + "', " + kmrodado + ", @dano, @pontuacao, 'Enviado')";
+                _mCMD = new MySqlCommand(_sql, bdc.openConnection());
+                _mCMD.Parameters.Add("@dano", MySqlDbType.Double).Value = dano;
+                _mCMD.Parameters.Add("@pontuacao", MySqlDbType.Double).Value = pontuacao;
+                int _vCMD = _mCMD.ExecuteNonQuery();
+                if (_vCMD >= 1)
+                {
+                    rtrInsert = "true";
+                    return rtrInsert;
+                }
+                else
+                {
+                    rtrInsert = "false";
+                    return rtrInsert;
+                }
+            }
+            catch (MySqlException mysql)
+            {
+                rtrInsert = mysql.Number.ToString();
+                return rtrInsert;
+            }
+            catch (Exception ex)
+            {
+                rtrInsert = ex.HResult.ToString();
+                return rtrInsert;
+            }
+        }
+        #endregion 
     }
 }

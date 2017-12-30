@@ -279,6 +279,16 @@ namespace e_LogBook.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnMaximizar {
+            get {
+                object obj = ResourceManager.GetObject("btnMaximizar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnMinimizar {
             get {
                 object obj = ResourceManager.GetObject("btnMinimizar", resourceCulture);

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using e_LogBook.Model;
 using e_LogBook.DAO;
 using System.Data;
+using e_LogBook.Properties;
 
 namespace e_LogBook.Controller
 {
@@ -56,9 +57,11 @@ namespace e_LogBook.Controller
         public string saveFreight(uint kmrodado, double dano, double pontuacao, string carga, string cityinicio, string citydestino, string datafinalfrete, int id, int EmpresaID)
         {
             string _tabela = "Frete";
+            string _tabela2 = Settings.Default.tabelaTemporary;
             string _result = dft.InsertFrete(_tabela, kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete, id);
             if (_result == "true")
             {
+                string _result2 = dft.InsertFreteTemporary(_tabela2, kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete);
                 if (opt.saveRanking(id, pontuacao, kmrodado, EmpresaID) == "true")
                     _result = "true";
                 else
