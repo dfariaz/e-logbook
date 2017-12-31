@@ -130,7 +130,7 @@ namespace e_LogBook
         private void AutoUpdater_ApplicationExitEvent()
         {
             Text = @"Closing application...";
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
             Application.Exit();
         }
 

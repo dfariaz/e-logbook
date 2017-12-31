@@ -138,7 +138,7 @@ namespace e_LogBook
             if(log.ShowDialog() == DialogResult.Cancel)
             {
                 string comandos = "" + NomeTabela + " ORDER BY ID DESC";
-                DataTable _dt = drv.select("*", comandos);
+                DataTable _dt = drv.select("`Data do Frete`, `Cidade Inicial`, `Cidade Destino`, `Carga`, `KM Rodado`,`Status`", comandos);
                 var _bs = new BindingSource();
                 _bs.DataSource = _dt;
                 dgvLogBook.DataSource = _bs;

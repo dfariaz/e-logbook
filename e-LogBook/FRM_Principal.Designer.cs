@@ -66,7 +66,7 @@
             this.panelTitulo.Controls.Add(this.lblTitulo);
             this.panelTitulo.Location = new System.Drawing.Point(188, -1);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(747, 54);
+            this.panelTitulo.Size = new System.Drawing.Size(763, 54);
             this.panelTitulo.TabIndex = 7;
             this.panelTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FRM_Principal_MouseDown);
             this.panelTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FRM_Principal_MouseMove);
@@ -81,7 +81,7 @@
             this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFechar.Location = new System.Drawing.Point(703, 12);
+            this.btnFechar.Location = new System.Drawing.Point(719, 12);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(30, 30);
             this.btnFechar.TabIndex = 3;
@@ -99,7 +99,7 @@
             this.btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimizar.Location = new System.Drawing.Point(667, 12);
+            this.btnMinimizar.Location = new System.Drawing.Point(683, 12);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(30, 30);
             this.btnMinimizar.TabIndex = 2;
@@ -118,7 +118,7 @@
             this.btnConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfig.Location = new System.Drawing.Point(621, 8);
+            this.btnConfig.Location = new System.Drawing.Point(637, 8);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(40, 40);
             this.btnConfig.TabIndex = 1;
@@ -324,16 +324,17 @@
             this.dgvLogBook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvLogBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLogBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLogBook.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvLogBook.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLogBook.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLogBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLogBook.ColumnHeadersVisible = false;
             this.dgvLogBook.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLogBook.Location = new System.Drawing.Point(203, 121);
             this.dgvLogBook.Name = "dgvLogBook";
             this.dgvLogBook.ReadOnly = true;
-            this.dgvLogBook.Size = new System.Drawing.Size(708, 351);
+            this.dgvLogBook.RowHeadersVisible = false;
+            this.dgvLogBook.Size = new System.Drawing.Size(723, 351);
             this.dgvLogBook.TabIndex = 12;
             // 
             // FRM_Principal
@@ -341,7 +342,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(933, 483);
+            this.ClientSize = new System.Drawing.Size(949, 483);
             this.ControlBox = false;
             this.Controls.Add(this.dgvLogBook);
             this.Controls.Add(this.lblVERSAOBETA);
