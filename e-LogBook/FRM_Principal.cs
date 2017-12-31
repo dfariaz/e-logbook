@@ -16,6 +16,7 @@ using e_LogBook.Controller;
 using e_LogBook.Properties;
 using System.Diagnostics;
 using System.Threading;
+using e_LogBook.Model;
 
 namespace e_LogBook
 {
@@ -34,6 +35,7 @@ namespace e_LogBook
 
         Optional opt = new Optional();
         Defaults drv = new Defaults();
+        DriverController drvr = new DriverController();
         LoginController dft = new LoginController();
 
         private void FRM_Principal_Load(object sender, EventArgs e)
@@ -64,9 +66,11 @@ namespace e_LogBook
 
             TS3 = new Thread(new ThreadStart(TSOpen));
             TS3.Start();
-            criaTabelaTemporaria();
+            preencheDGV();
+            //criaTabelaTemporaria();
         }
 
+        /** Antigo 
         private void criaTabelaTemporaria()
         {
             dataUsuario = DateTime.Now.Day.ToString()+DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
@@ -81,7 +85,7 @@ namespace e_LogBook
         {
             string _result = drv.deleteTable(NomeTabela);
         }
-
+        */
         #region MOVE FORM
         Point Ponto = new Point();
 
@@ -107,7 +111,8 @@ namespace e_LogBook
         {
             if (MessageBox.Show(null, "Deseja sair do eLogBook?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                deletaTabelaTemporaria();
+                //deletaTabelaTemporaria();
+                
                 TS3.Abort();
                 Application.Exit();
             }
@@ -137,12 +142,23 @@ namespace e_LogBook
             log.LEmpresa = empresa_id;
             if(log.ShowDialog() == DialogResult.Cancel)
             {
-                string comandos = "" + NomeTabela + " ORDER BY ID DESC";
-                DataTable _dt = drv.select("`Data do Frete`, `Cidade Inicial`, `Cidade Destino`, `Carga`, `KM Rodado`,`Status`", comandos);
-                var _bs = new BindingSource();
-                _bs.DataSource = _dt;
-                dgvLogBook.DataSource = _bs;
+                preencheDGV();
             }
+        }
+
+        private void preencheDGV()
+        {
+            string comandos = "dadosLocais ORDER BY ID DESC";
+            DataTable _dt = drv.selectLite("ID, data, cidadeinicial, cidadedestino, carga, kmrodado, status", comandos);
+            var _bs = new BindingSource();
+            _bs.DataSource = _dt;
+            dgvLogBook.DataSource = _bs;
+        }
+
+        private void deleteLocalRegistro(int idMotorista)
+        {
+            string condicao = "ID = " + idMotorista;
+            drv.deleteLite("dadosLocais", condicao);
         }
 
         private void btnEmpresas_Click(object sender, EventArgs e)
@@ -188,6 +204,43 @@ namespace e_LogBook
             }
         }
 
+        private void btnSync_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja sincronizar os dados?", "Questão", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string comandos = "dadosLocais ORDER BY ID DESC";
+                DataTable _dt = drv.selectLite("*", comandos);
+                if (_dt.Rows.Count != 0)
+                {
+                    foreach (DataRow dr in _dt.Rows)
+                    {
+                        if (dr["Status"].ToString() != "Enviado")
+                        {
+                            int idDados = Convert.ToInt32(dr["ID"].ToString());
+                            uint kms = Convert.ToUInt32(dr["Kmrodado"].ToString());
+                            double danos = Convert.ToDouble(dr["Dano"].ToString());
+                            double pontos = Convert.ToDouble(dr["Pontuacao"].ToString());
+                            int idMotoristas = Convert.ToInt32(dr["IdMotorista"].ToString());
+                            int idEmpresas = Convert.ToInt32(dr["IdEmpresa"].ToString());
+                            string _resultado = drvr.saveFreight(kms, danos, pontos, dr["Carga"].ToString(), dr["Cidadeinicial"].ToString(), dr["Cidadedestino"].ToString(), dr["Data"].ToString(), idMotoristas, idEmpresas);
+                            if (_resultado == "true")
+                            {
+                                deleteLocalRegistro(idDados);
+                                preencheDGV();
+                                MessageBox.Show("Dados sincronizados com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else if (_resultado == "rankingFalse")
+                                MessageBox.Show("Ocorreu um erro ao tentar atualizar o ranking!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                                MessageBox.Show("Ocorreu um erro ao tentar sincronizar seus dados!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                            MessageBox.Show("Os dados já estão sincronizados!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
         private string server;
         private string port;
         private bool checkTS(int ts3)
@@ -201,13 +254,21 @@ namespace e_LogBook
                     server = _dr["Servidor"].ToString();
                     port = _dr["Porta"].ToString();
                 }
-                if (server != "192.168.0.1" && port != "2555")
+                if (Tools.checkConnection())
                 {
-                    Process.Start("ts3server://" + server + "?port=" + port + "");
-                    return true;
+                    preencheDGV();
+                    if (server != "192.168.0.1" && port != "2555")
+                    {
+                        Process.Start("ts3server://" + server + "?port=" + port + "");
+                        return true;
+                    }
+                    else
+                        return false;
                 }
-                else                
+                else
+                {
                     return false;
+                }
             }
             else
                 return false;

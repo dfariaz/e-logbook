@@ -4,39 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using MySql.Data;
-using MySql.Data.MySqlClient;
-using eLogBook.Data;
+using System.Data.SQLite;
 
 namespace e_LogBook.DAO
 {
-    public class BDConnection
+    public class BDConnectionSqlite
     {
-        /* 
-         * Projeto e-LogBook
-         * Dev: Deivid Farias | Data: 13/12/2017
-         * Class BDConnection
-         * 
-         * Classe de conexão com o banco de dados
-         * zeroh537_master | @Logbook
-         * zeroh537_LogBook_Teste
-         */
-
         private string connectionString = string.Empty;
 
-        #region Mysql
-        MySqlConnection con;
-        Class cls = new Class();
-
+        #region SQLite  
         public void createStringConnection()
         {
-            connectionString = cls.cString();
+            string strconn = @"DataSource=C:\eLogBook\BD\Local.sqlite";
+            connectionString = strconn;
         }
 
-        public MySqlConnection openConnection()
+        SQLiteConnection con;
+
+        public SQLiteConnection abreConexao()
         {
             createStringConnection();
-            con = new MySqlConnection(connectionString);
+            con = new SQLiteConnection(connectionString);
             if (con.State == System.Data.ConnectionState.Closed)
             {
                 con.Open();
@@ -46,10 +34,10 @@ namespace e_LogBook.DAO
                 return con;
         }
 
-        public MySqlConnection closeConnection()
+        public SQLiteConnection fechaConexao()
         {
             createStringConnection();
-            con = new MySqlConnection(connectionString);
+            con = new SQLiteConnection(connectionString);
             if (con.State == System.Data.ConnectionState.Open)
             {
                 con.Open();
@@ -59,6 +47,6 @@ namespace e_LogBook.DAO
                 return con;
         }
 
-        #endregion
+        #endregion 
     }
 }

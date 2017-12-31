@@ -181,6 +181,7 @@
             // 
             // cboEmpresa
             // 
+            this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEmpresa.FormattingEnabled = true;
             this.cboEmpresa.Location = new System.Drawing.Point(189, 70);
             this.cboEmpresa.Name = "cboEmpresa";

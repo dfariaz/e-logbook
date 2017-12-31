@@ -81,6 +81,12 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tabManutencao = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.btnValida = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tabEmpresa = new System.Windows.Forms.TabPage();
@@ -96,12 +102,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnSalvarEmpresa = new System.Windows.Forms.Button();
             this.folderBrowserDialogets = new System.Windows.Forms.FolderBrowserDialog();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             this.panelSysTitulo.SuspendLayout();
@@ -581,6 +581,7 @@
             // 
             // cboRSMotorista
             // 
+            this.cboRSMotorista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRSMotorista.FormattingEnabled = true;
             this.cboRSMotorista.Items.AddRange(new object[] {
             "Mês",
@@ -649,6 +650,7 @@
             // 
             // cboANCMotoristas
             // 
+            this.cboANCMotoristas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboANCMotoristas.FormattingEnabled = true;
             this.cboANCMotoristas.Items.AddRange(new object[] {
             "Mês",
@@ -770,6 +772,63 @@
             this.tabManutencao.TabIndex = 3;
             this.tabManutencao.Text = "Manutenção";
             this.tabManutencao.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(274, 259);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(122, 19);
+            this.label27.TabIndex = 7;
+            this.label27.Text = "Zero Hora Virtual";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(242, 230);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(100, 19);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "Mantido Por";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(39, 282);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(129, 19);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "Cunha  - Zero Hora";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(39, 259);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(127, 19);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Fariaz  - Zero Hora";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(11, 230);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(137, 19);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "Desenvolvido Por";
+            // 
+            // label22
+            // 
+            this.label22.Location = new System.Drawing.Point(11, 156);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(583, 63);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "Logbook é um sistema de controle de viagem com integração com o Euro Truck Simula" +
+    "tor 2 - ETS2. Ele recebe os dados da viagem e envia para o servidor da Empresa Z" +
+    "ero Hora Virtual.";
             // 
             // btnValida
             // 
@@ -921,63 +980,6 @@
             this.btnSalvarEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarEmpresa.UseVisualStyleBackColor = true;
             this.btnSalvarEmpresa.Click += new System.EventHandler(this.btnSalvarEmpresa_Click);
-            // 
-            // label22
-            // 
-            this.label22.Location = new System.Drawing.Point(11, 156);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(583, 63);
-            this.label22.TabIndex = 2;
-            this.label22.Text = "Logbook é um sistema de controle de viagem com integração com o Euro Truck Simula" +
-    "tor 2 - ETS2. Ele recebe os dados da viagem e envia para o servidor da Empresa Z" +
-    "ero Hora Virtual.";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(11, 230);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(137, 19);
-            this.label23.TabIndex = 3;
-            this.label23.Text = "Desenvolvido Por";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(39, 259);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(127, 19);
-            this.label24.TabIndex = 4;
-            this.label24.Text = "Fariaz  - Zero Hora";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(39, 282);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(129, 19);
-            this.label25.TabIndex = 5;
-            this.label25.Text = "Cunha  - Zero Hora";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(242, 230);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(100, 19);
-            this.label26.TabIndex = 6;
-            this.label26.Text = "Mantido Por";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(274, 259);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(122, 19);
-            this.label27.TabIndex = 7;
-            this.label27.Text = "Zero Hora Virtual";
             // 
             // FRM_Settings
             // 

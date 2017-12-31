@@ -7,12 +7,14 @@ using System.Data;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using e_LogBook.DAO;
+using System.Data.SQLite;
 
 namespace e_LogBook.Controller
 {
     public class Defaults
     {
         BDConnection bdc = new BDConnection();
+        BDConnectionSqlite bdcSQLite = new BDConnectionSqlite();
 
         private MySqlDataAdapter _mDA;
         private MySqlCommand _mCMD;
@@ -361,16 +363,23 @@ namespace e_LogBook.Controller
             }
         }
 
-        public string InsertFreteTemporary(string tabela, uint kmrodado, double dano, double pontuacao, string carga, string cityinicio, string citydestino, string datafinalfrete)
+
+        #endregion
+
+        #region SQLite LOCAL
+        private SQLiteCommand _fCMD;
+        private SQLiteDataAdapter _fDA;
+
+        public string InsertLite(string tabela, uint kmrodado, double dano, double pontuacao, string carga, string cityinicio, string citydestino, string datafinalfrete, string Enviado, int idMotorista, int idEmpresa)
         {
-            bdc.closeConnection();
+            bdcSQLite.fechaConexao();
             try
             {
-                _sql = "INSERT INTO " + tabela + " (`Data do Frete`, `Cidade Inicial`, `Cidade Destino`, `Carga`, `KM Rodado`, `Dano`, `Pontos`, `Status`) VALUES ('" + datafinalfrete + "', '" + cityinicio + "', '" + citydestino + "', '" + carga + "', " + kmrodado + ", @dano, @pontuacao, 'Enviado')";
-                _mCMD = new MySqlCommand(_sql, bdc.openConnection());
-                _mCMD.Parameters.Add("@dano", MySqlDbType.Double).Value = dano;
-                _mCMD.Parameters.Add("@pontuacao", MySqlDbType.Double).Value = pontuacao;
-                int _vCMD = _mCMD.ExecuteNonQuery();
+                _sql = "INSERT INTO " + tabela + " (Data, Cidadeinicial, Cidadedestino, Carga, Kmrodado, Dano, Pontuacao, Status, IdMotorista, IdEmpresa) VALUES ('" + datafinalfrete + "', '" + cityinicio + "', '" + citydestino + "', '" + carga + "', " + kmrodado + ", @dano, @pontuacao, '" + Enviado + "', "+idMotorista+", "+idEmpresa+")";
+                _fCMD = new SQLiteCommand(_sql, bdcSQLite.abreConexao());
+                _fCMD.Parameters.Add("@dano", DbType.Double).Value = dano;
+                _fCMD.Parameters.Add("@pontuacao", DbType.Double).Value = pontuacao;
+                int _vCMD = _fCMD.ExecuteNonQuery();
                 if (_vCMD >= 1)
                 {
                     rtrInsert = "true";
@@ -382,9 +391,9 @@ namespace e_LogBook.Controller
                     return rtrInsert;
                 }
             }
-            catch (MySqlException mysql)
+            catch (SQLiteException mysql)
             {
-                rtrInsert = mysql.Number.ToString();
+                rtrInsert = mysql.HResult.ToString();
                 return rtrInsert;
             }
             catch (Exception ex)
@@ -393,6 +402,59 @@ namespace e_LogBook.Controller
                 return rtrInsert;
             }
         }
+
+        public DataTable selectLite(string campos, string comandos)
+        {
+            bdcSQLite.fechaConexao();
+            try
+            {
+                _sql = "SELECT " + campos + " FROM " + comandos + "";
+                _fDA = new SQLiteDataAdapter(_sql, bdcSQLite.abreConexao());
+                _dt = new DataTable();
+                _fDA.Fill(_dt);
+                return _dt;
+            }
+            catch (SQLiteException e_mysql)
+            {
+                return _dt;
+            }
+            catch (Exception e)
+            {
+                return _dt;
+            }
+        }
+
+        public string deleteLite(string tabela, string condicao)
+        {
+            bdcSQLite.fechaConexao();
+            try
+            {
+                _sql = "DELETE FROM " + tabela + " WHERE " + condicao + "";
+                _fCMD = new SQLiteCommand(_sql, bdcSQLite.abreConexao());
+                int _vCMD = _fCMD.ExecuteNonQuery();
+                if (_vCMD >= 1)
+                {
+                    rtrDelete = "true";
+                    return rtrDelete;
+                }
+                else
+                {
+                    rtrDelete = "false";
+                    return rtrDelete;
+                }
+            }
+            catch (SQLiteException mysql)
+            {
+                rtrDelete = mysql.HResult.ToString();
+                return rtrDelete;
+            }
+            catch (Exception ex)
+            {
+                rtrDelete = ex.HResult.ToString();
+                return rtrDelete;
+            }
+        }
+
         #endregion 
     }
 }

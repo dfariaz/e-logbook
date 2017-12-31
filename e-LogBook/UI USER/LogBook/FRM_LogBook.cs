@@ -13,6 +13,7 @@ using System.Threading;
 using System.Windows.Forms;
 using e_LogBook.Data;
 using System.Threading.Tasks;
+using System.Net.NetworkInformation;
 
 /*
  */
@@ -185,6 +186,13 @@ namespace e_LogBook.UI_USER.LogBook
                 }
                 else if (_resultado == "rankingFalse")
                     MessageBox.Show("Ocorreu um erro ao tentar atualizar o ranking!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else if (_resultado == "connectionoff")
+                {
+                    MessageBox.Show("Conexão Offline! /n O sistema salvará sua viagem quando houver conexão com a internet!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpaDados();
+                    PararLogBook();
+                    //this.Close();
+                }
                 else
                     MessageBox.Show("Ocorreu um erro ao tentar salvar sua carga!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

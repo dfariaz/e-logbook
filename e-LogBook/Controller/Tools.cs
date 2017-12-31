@@ -96,5 +96,38 @@ namespace e_LogBook.Controller
             }
 
         }
+
+        [System.Runtime.InteropServices.DllImport("wininet.dll")]
+        private static extern bool InternetGetConnectedState(out int Description, int ReservedValue);
+
+        public static bool checkConnection()
+        {
+            int desc;
+            bool hasConnection = InternetGetConnectedState(out desc, 0);
+            if (hasConnection)
+                hasConnection = webClient("http://zerohoravirtual.com/");
+
+            return hasConnection;
+        }
+
+        private static bool webClient(string _url)
+        {
+            System.Net.WebRequest webReq;
+            System.Net.WebResponse resp;
+            webReq = System.Net.WebRequest.Create(_url);
+
+            try
+            {
+                resp = webReq.GetResponse();
+                resp.Close();
+                webReq = null;
+                return true;
+            }
+            catch
+            {
+                webReq = null;
+                return false;
+            }
+        }
     }
 }

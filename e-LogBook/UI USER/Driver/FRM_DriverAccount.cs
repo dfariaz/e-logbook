@@ -181,7 +181,10 @@ namespace e_LogBook.UI_USER.Driver
                 if (_resultSalvar != "true")
                     MessageBox.Show(null, "Os dados não foram atualizados com sucesso, contate o administrador!  \n Código do Erro: " + _resultSalvar, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
+                {
+                    getInformation(idusuario);
                     MessageBox.Show(null, "Os dados foram atualizados com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {

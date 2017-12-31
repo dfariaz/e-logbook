@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_DriverAccount));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -178,6 +178,7 @@
             // 
             // tabAccount
             // 
+            this.tabAccount.Controls.Add(this.gboxSenha);
             this.tabAccount.Controls.Add(this.btnSalvar);
             this.tabAccount.Controls.Add(this.btnTabFretes);
             this.tabAccount.Controls.Add(this.lblNumeroCaminhao);
@@ -186,7 +187,6 @@
             this.tabAccount.Controls.Add(this.label8);
             this.tabAccount.Controls.Add(this.lblShowData);
             this.tabAccount.Controls.Add(this.label6);
-            this.tabAccount.Controls.Add(this.gboxSenha);
             this.tabAccount.Controls.Add(this.txtNome);
             this.tabAccount.Controls.Add(this.label1);
             this.tabAccount.Location = new System.Drawing.Point(4, 28);
@@ -304,7 +304,7 @@
             this.gboxSenha.Controls.Add(this.label3);
             this.gboxSenha.Controls.Add(this.txtSenhaAtual);
             this.gboxSenha.Controls.Add(this.label2);
-            this.gboxSenha.Location = new System.Drawing.Point(538, 28);
+            this.gboxSenha.Location = new System.Drawing.Point(538, 53);
             this.gboxSenha.Name = "gboxSenha";
             this.gboxSenha.Size = new System.Drawing.Size(323, 337);
             this.gboxSenha.TabIndex = 2;
@@ -562,10 +562,10 @@
             this.dgvFretes.AllowUserToAddRows = false;
             this.dgvFretes.AllowUserToDeleteRows = false;
             this.dgvFretes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvFretes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvFretes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFretes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

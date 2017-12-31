@@ -146,6 +146,7 @@
             // 
             // cboStatus
             // 
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
             "Ativo",
@@ -166,6 +167,7 @@
             // 
             // cboEmpresa
             // 
+            this.cboEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEmpresa.FormattingEnabled = true;
             this.cboEmpresa.Location = new System.Drawing.Point(189, 104);
             this.cboEmpresa.Name = "cboEmpresa";

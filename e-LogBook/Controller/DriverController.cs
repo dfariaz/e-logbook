@@ -14,6 +14,7 @@ namespace e_LogBook.Controller
     {
         Defaults dft = new Defaults();
         Optional opt = new Optional();
+        Job jobs = new Job();
 
         public DataTable getInformation(int id)
         {
@@ -54,23 +55,43 @@ namespace e_LogBook.Controller
             return dft.select(_campos, _comandos);
         }
 
-        public string saveFreight(uint kmrodado, double dano, double pontuacao, string carga, string cityinicio, string citydestino, string datafinalfrete, int id, int EmpresaID)
+        
+
+        public string saveFreight(uint kmrodado, double dano, double pontuacao, string carga, string cityinicio, string citydestino, string datafinalfrete, int idM, int EmpresaID)
         {
             string _tabela = "Frete";
-            string _tabela2 = Settings.Default.tabelaTemporary;
-            string _result = dft.InsertFrete(_tabela, kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete, id);
-            if (_result == "true")
+            if (Tools.checkConnection())
             {
-                string _result2 = dft.InsertFreteTemporary(_tabela2, kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete);
-                if (opt.saveRanking(id, pontuacao, kmrodado, EmpresaID) == "true")
-                    _result = "true";
+                string _result = dft.InsertFrete(_tabela, kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete, idM);
+                if (_result == "true")
+                {
+                    /*** List
+                    */
+                    string Enviado = "Enviado";
+                    saveLocal(kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete, idM, EmpresaID, Enviado);
+                    if (opt.saveRanking(idM, pontuacao, kmrodado, EmpresaID) == "true")
+                        _result = "true";
+                    else
+                        _result = "rankingFalse";
+                }
                 else
-                    _result = "rankingFalse";
+                    _result = "false";
+                return _result;
             }
             else
-                _result = "false";
-            return _result;
+            {
+                string Enviado = "Não Enviado";
+                saveLocal(kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete, idM, EmpresaID, Enviado);
+                return "connectionoff";
+            }
         }
+
+        public void saveLocal(uint kmrodado, double dano, double pontuacao, string carga, string cityinicio, string citydestino, string datafinalfrete, int idM, int EmpresaID, string Enviado)
+        {
+            string _tabela = "dadosLocais";
+            string _result = dft.InsertLite(_tabela, kmrodado, dano, pontuacao, carga, cityinicio, citydestino, datafinalfrete, Enviado, idM, EmpresaID);
+        }
+
 
         public string updateDados(string nome, string senha, int id)
         {

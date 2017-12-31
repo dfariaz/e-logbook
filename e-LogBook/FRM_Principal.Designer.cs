@@ -49,6 +49,14 @@
             this.btnControle = new System.Windows.Forms.Button();
             this.btnLogBook = new System.Windows.Forms.Button();
             this.dgvLogBook = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidadeinicial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidadedestino = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.carga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kmrodado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSync = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             this.panelSysTitulo.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -329,6 +337,14 @@
             this.dgvLogBook.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLogBook.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLogBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLogBook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.data,
+            this.cidadeinicial,
+            this.cidadedestino,
+            this.carga,
+            this.kmrodado,
+            this.status});
             this.dgvLogBook.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvLogBook.Location = new System.Drawing.Point(203, 121);
             this.dgvLogBook.Name = "dgvLogBook";
@@ -337,6 +353,81 @@
             this.dgvLogBook.Size = new System.Drawing.Size(723, 351);
             this.dgvLogBook.TabIndex = 12;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            this.id.Width = 29;
+            // 
+            // data
+            // 
+            this.data.DataPropertyName = "data";
+            this.data.HeaderText = "data";
+            this.data.Name = "data";
+            this.data.ReadOnly = true;
+            this.data.Visible = false;
+            this.data.Width = 44;
+            // 
+            // cidadeinicial
+            // 
+            this.cidadeinicial.DataPropertyName = "cidadeinicial";
+            this.cidadeinicial.HeaderText = "Cidade Inicial";
+            this.cidadeinicial.Name = "cidadeinicial";
+            this.cidadeinicial.ReadOnly = true;
+            this.cidadeinicial.Width = 122;
+            // 
+            // cidadedestino
+            // 
+            this.cidadedestino.DataPropertyName = "cidadedestino";
+            this.cidadedestino.HeaderText = "Cidade Destino";
+            this.cidadedestino.Name = "cidadedestino";
+            this.cidadedestino.ReadOnly = true;
+            this.cidadedestino.Width = 132;
+            // 
+            // carga
+            // 
+            this.carga.DataPropertyName = "carga";
+            this.carga.HeaderText = "Carga";
+            this.carga.Name = "carga";
+            this.carga.ReadOnly = true;
+            this.carga.Width = 73;
+            // 
+            // kmrodado
+            // 
+            this.kmrodado.DataPropertyName = "kmrodado";
+            this.kmrodado.HeaderText = "KM Rodado";
+            this.kmrodado.Name = "kmrodado";
+            this.kmrodado.ReadOnly = true;
+            this.kmrodado.Width = 109;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            this.status.Width = 73;
+            // 
+            // btnSync
+            // 
+            this.btnSync.FlatAppearance.BorderSize = 0;
+            this.btnSync.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSync.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSync.Image = global::e_LogBook.Properties.Resources.btnAtualizar;
+            this.btnSync.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSync.Location = new System.Drawing.Point(779, 62);
+            this.btnSync.Name = "btnSync";
+            this.btnSync.Size = new System.Drawing.Size(122, 51);
+            this.btnSync.TabIndex = 13;
+            this.btnSync.Text = "Sincronizar";
+            this.btnSync.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSync.UseVisualStyleBackColor = true;
+            this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
+            // 
             // FRM_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -344,6 +435,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(949, 483);
             this.ControlBox = false;
+            this.Controls.Add(this.btnSync);
             this.Controls.Add(this.dgvLogBook);
             this.Controls.Add(this.lblVERSAOBETA);
             this.Controls.Add(this.panelMenu);
@@ -392,6 +484,14 @@
         private System.Windows.Forms.Button btnControle;
         private System.Windows.Forms.Button btnLogBook;
         private System.Windows.Forms.DataGridView dgvLogBook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cidadeinicial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cidadedestino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn carga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kmrodado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.Button btnSync;
     }
 }
 
