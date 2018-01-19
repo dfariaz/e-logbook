@@ -254,6 +254,39 @@ namespace e_LogBook.Controller
             }
         }
 
+        public string UpdateRankingPontos(string tabela, double pontuacaoMes, double pontuacaoAno, string condicao)
+        {
+            bdc.closeConnection();
+            try
+            {
+                _sql = "UPDATE " + tabela + " SET PontosMes = @pontuacaoMes, PontosAno = @pontuacaoAno WHERE " + condicao + "";
+                _mCMD = new MySqlCommand(_sql, bdc.openConnection());
+                _mCMD.Parameters.Add("@pontuacaoMes", MySqlDbType.Double).Value = pontuacaoMes;
+                _mCMD.Parameters.Add("@pontuacaoAno", MySqlDbType.Double).Value = pontuacaoAno;
+                int _vCMD = _mCMD.ExecuteNonQuery();
+                if (_vCMD == 1)
+                {
+                    rtrUpdate = "true";
+                    return rtrUpdate;
+                }
+                else
+                {
+                    rtrUpdate = "false";
+                    return rtrUpdate;
+                }
+            }
+            catch (MySqlException mysql)
+            {
+                rtrUpdate = mysql.Number.ToString();
+                return rtrUpdate;
+            }
+            catch (Exception ex)
+            {
+                rtrUpdate = ex.HResult.ToString();
+                return rtrUpdate;
+            }
+        }
+
         #endregion
 
         //Retorna uma string
@@ -430,6 +463,37 @@ namespace e_LogBook.Controller
             try
             {
                 _sql = "DELETE FROM " + tabela + " WHERE " + condicao + "";
+                _fCMD = new SQLiteCommand(_sql, bdcSQLite.abreConexao());
+                int _vCMD = _fCMD.ExecuteNonQuery();
+                if (_vCMD >= 1)
+                {
+                    rtrDelete = "true";
+                    return rtrDelete;
+                }
+                else
+                {
+                    rtrDelete = "false";
+                    return rtrDelete;
+                }
+            }
+            catch (SQLiteException mysql)
+            {
+                rtrDelete = mysql.HResult.ToString();
+                return rtrDelete;
+            }
+            catch (Exception ex)
+            {
+                rtrDelete = ex.HResult.ToString();
+                return rtrDelete;
+            }
+        }
+
+        public string deleteLiteAll(string tabela)
+        {
+            bdcSQLite.fechaConexao();
+            try
+            {
+                _sql = "DELETE FROM " + tabela;
                 _fCMD = new SQLiteCommand(_sql, bdcSQLite.abreConexao());
                 int _vCMD = _fCMD.ExecuteNonQuery();
                 if (_vCMD >= 1)

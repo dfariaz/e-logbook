@@ -29,38 +29,52 @@ namespace e_LogBook.Controller
             return dft.select(_campos, _comandos);
         }
 
-        public DataTable KMMotoristaMes(int id, int mes)
+        public DataTable KMMotoristaMes(int id, int mes, int ano)
         {
             string _campos = "r.KMMes as KMMes, r.PontosMes as PontosMes";
-            string _comandos = "Motorista m inner JOIN Ranking r on r.IDMotorista = m.ID WHERE m.IDEmpresa = " + id + " AND r.Mes = '" + mes + "'";
+            string _comandos = "Motorista m inner JOIN Ranking r on r.IDMotorista = m.ID WHERE m.ID = " + id + " AND r.Mes = '" + mes + "' AND r.Ano = '"+ano+"'";
             return dft.select(_campos, _comandos);
         }
 
         public DataTable KMMotoristaAno(int id, int ano)
         {
             string _campos = "r.KMAno as KMAno, r.PontosAno as PontosAno";
-            string _comandos = "Motorista m inner JOIN Ranking r on r.IDMotorista = m.ID WHERE m.IDEmpresa = " + id + " AND r.Ano = '" + ano + "'";
+            string _comandos = "Motorista m inner JOIN Ranking r on r.IDMotorista = m.ID WHERE m.ID = " + id + " AND r.Ano = '" + ano + "'";
             return dft.select(_campos, _comandos);
         }
 
-        public DataTable KMEmpresaMes(int id, int mes)
+        public DataTable KMMotoristaMesC(int id, int mes, int ano, int empresa)
         {
-            string _campos = "r.KMMes as KMMes";
-            string _comandos = "Empresa e inner JOIN Ranking r on r.IDEmpresa = e.ID WHERE e.ID = " + id + " AND r.Mes = '" + mes + "'";
+            string _campos = "SUM(r.KMMes) as KMMes, r.PontosMes as PontosMes";
+            string _comandos = "Motorista m inner JOIN Ranking r on r.IDMotorista = m.ID WHERE m.ID = " + id + " AND r.Mes = '" + mes + "' AND r.Ano = '" + ano + "' AND r.IdEmpresa = "+empresa+"";
+            return dft.select(_campos, _comandos);
+        }
+
+        public DataTable KMMotoristaAnoC(int id, int ano, int empresa)
+        {
+            string _campos = "SUM(r.KMAno) as KMAno, r.PontosAno as PontosAno";
+            string _comandos = "Motorista m inner JOIN Ranking r on r.IDMotorista = m.ID WHERE m.ID = " + id + " AND r.Ano = '" + ano + "' AND r.IdEmpresa = " + empresa + "";
+            return dft.select(_campos, _comandos);
+        }
+
+        public DataTable KMEmpresaMes(int id, int mes, int ano)
+        {
+            string _campos = "SUM(r.KMMes) as KMMes";
+            string _comandos = "Empresa e inner JOIN Ranking r on r.IDEmpresa = e.ID WHERE e.ID = " + id + " AND r.Mes = '" + mes + "' AND r.Ano = '"+ano+"'";
             return dft.select(_campos, _comandos);
         }
 
         public DataTable KMEmpresaAno(int id, int ano)
         {
-            string _campos = "r.KMAno as KMAno";
+            string _campos = "SUM(r.KMAno) as KMAno";
             string _comandos = "Empresa e inner JOIN Ranking r on r.IDEmpresa = e.ID WHERE e.ID = " + id + " AND r.Ano = '" + ano + "'";
             return dft.select(_campos, _comandos);
         }
 
-        public string saveCompany(string nome, string responsavel)
+        public string saveCompany(string nome, string responsavel, int LimiteUsers)
         {
             string _tabela = "Empresa";
-            string _comandos = "VALUES (null, '" + nome + "', '" + responsavel + "', CURDATE())";
+            string _comandos = "VALUES (null, '" + nome + "', '" + responsavel + "', CURDATE(), "+LimiteUsers+")";
             return dft.Insert(_tabela, _comandos);
         }
     }

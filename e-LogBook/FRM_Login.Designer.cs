@@ -142,6 +142,7 @@
             // btnEntrar
             // 
             this.btnEntrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnEntrar.Enabled = false;
             this.btnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
             this.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnEntrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -161,6 +162,7 @@
             // 
             // txtSenha
             // 
+            this.txtSenha.Enabled = false;
             this.txtSenha.Location = new System.Drawing.Point(117, 131);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(228, 27);

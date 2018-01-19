@@ -15,7 +15,8 @@ namespace e_LogBook.UI_USER.Company
     public partial class FRM_Company : Form
     {
         CompanyController ccl = new CompanyController();
-
+        public int public_login { get; set; }
+        private int idLogin;
         public FRM_Company()
         {
             InitializeComponent();
@@ -54,17 +55,30 @@ namespace e_LogBook.UI_USER.Company
 
         private void FRM_Company_Load(object sender, EventArgs e)
         {
+            if (!this.public_login.Equals(""))
+                idLogin = public_login;
             changeColors();
             fillCombo();
         }
 
         private void btnPesquisa_Click(object sender, EventArgs e)
         {
+            limpa();
             int combo = Convert.ToInt16(cboEmpresa.SelectedValue.ToString());
             preencheInfo(combo);
-            preencheMotoristaKM(combo);
+            preencheMotoristaKM(combo, idLogin);
             preencheEmpresaKM(combo);
             showCampos();
+        }
+
+        private void limpa()
+        {
+            lblAnoEmpresa.Text = "";
+            lblAnoMotorista.Text = "";
+            lblMensalMotorista.Text = "";
+            lblMesEmpresa.Text = "";
+            lblNomeEmpresa.Text = "";
+            lblQTDMotoristas.Text = "";
         }
 
         private void showCampos()
@@ -82,7 +96,7 @@ namespace e_LogBook.UI_USER.Company
             int mes = Convert.ToInt32(DateTime.Now.Month);
             int ano = Convert.ToInt32(DateTime.Now.Year);
             DataTable _dtM = new DataTable();
-            _dtM = ccl.KMEmpresaMes(combo, mes);
+            _dtM = ccl.KMEmpresaMes(combo, mes, ano);
             foreach (DataRow _dr in _dtM.Rows)
             {
                 lblMesEmpresa.Text = _dr["KMMes"].ToString();
@@ -107,19 +121,19 @@ namespace e_LogBook.UI_USER.Company
             }
         }
 
-        private void preencheMotoristaKM(int combo)
+        private void preencheMotoristaKM(int combo, int id)
         {
             int mes = Convert.ToInt32(DateTime.Now.Month);
             int ano = Convert.ToInt32(DateTime.Now.Year);
             DataTable _dtM = new DataTable();
-            _dtM = ccl.KMMotoristaMes(combo, mes);
+            _dtM = ccl.KMMotoristaMesC(id, mes, ano, combo);
             foreach (DataRow _dr in _dtM.Rows)
             {
                 lblMensalMotorista.Text = _dr["KMMes"].ToString();
             }
 
             DataTable _dtA = new DataTable();
-            _dtA = ccl.KMMotoristaAno(combo, ano);
+            _dtA = ccl.KMMotoristaAnoC(id, ano, combo);
             foreach (DataRow _dr in _dtA.Rows)
             {
                 lblAnoMotorista.Text = _dr["KMAno"].ToString();

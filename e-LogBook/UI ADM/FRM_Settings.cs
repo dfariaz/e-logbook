@@ -26,6 +26,7 @@ namespace e_LogBook.UI_ADM
         LoginController dft = new LoginController();
         CompanyController cll = new CompanyController();
         DriverController drv = new DriverController();
+        Defaults dfts = new Defaults();
 
         public FRM_Settings()
         {
@@ -195,8 +196,14 @@ namespace e_LogBook.UI_ADM
 
         private void btnEmpresa_Click(object sender, EventArgs e)
         {
-            preencheDGVEmpresa();
-            tabControlConfig.SelectedTab = tabEmpresa;
+            if (empresa_id == 1)
+            {
+                preencheDGVEmpresa();
+                preencheComboTabEmpresa();
+                tabControlConfig.SelectedTab = tabEmpresa;
+            }
+            else
+                MessageBox.Show("Dados disponiveis somente ao administrativo da Zero Hora", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -259,9 +266,10 @@ namespace e_LogBook.UI_ADM
 
         private void btnSalvarEmpresa_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text != "" && txtResp.Text != "")
+            if (txtNome.Text != "" && txtResp.Text != "" && txtSlots.Text != "")
             {
-                string _result = cll.saveCompany(txtNome.Text, txtResp.Text);
+                int limite = Convert.ToInt32(txtSlots.Text);
+                string _result = cll.saveCompany(txtNome.Text, txtResp.Text, limite);
                 if (_result == "true")
                     MessageBox.Show(null, "Dados inseridos com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
@@ -287,6 +295,55 @@ namespace e_LogBook.UI_ADM
             {
                 MessageBox.Show(null, "Insira os dados antes de continuar!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
+        }
+
+        private void btnCriarEvento_Click(object sender, EventArgs e)
+        {
+            FRM_Eventos even = new FRM_Eventos();
+            even.ShowDialog();
+        }
+
+        private void dgvEmpresa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(MessageBox.Show("Deseja alterar a quantidade de slots?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string Prompt = "Informe a quantidade de Slots";
+                string Titulo = "Alerta";
+                string Resultado = Microsoft.VisualBasic.Interaction.InputBox(Prompt, Titulo, "0", 500, 300);
+                if (Resultado != "")
+                {
+                    DataGridViewRow linhaSelecionada = dgvEmpresa.CurrentRow;
+                    int empresaSlots = Convert.ToInt32(linhaSelecionada.Cells["id"].Value.ToString());
+                    string result = dfts.Update("Empresa", "LimiteUsers = " + Resultado, "ID = " + empresaSlots);
+                    if(result == "true")
+                        MessageBox.Show("Slots atualizados com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Erro: "+result+"!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("Informe a quantidade de slots!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            preencheDGVEmpresa();
+        }
+
+        private void btnMADM_Click(object sender, EventArgs e)
+        {
+            int selectMADM = Convert.ToInt32(cboMADM.SelectedValue);
+            string resultADM = drv.setADM(selectMADM, 0);
+            if(resultADM == "true")
+                MessageBox.Show("Admin atribuidos com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Erro: "+resultADM, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnDADM_Click(object sender, EventArgs e)
+        {
+            int selectMADM = Convert.ToInt32(cboMADM.SelectedValue);
+            string resultADM = drv.setADM(selectMADM, 1);
+            if (resultADM == "true")
+                MessageBox.Show("Admin removido com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Erro: " + resultADM, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void preencheDGVEmpresa()
@@ -330,12 +387,24 @@ namespace e_LogBook.UI_ADM
 
             DataTable _dt2 = new DataTable();
             _dt2 = drv.getInformationMotoristas(empresa_id);
-            DataRow _row2 = _dt.NewRow();
+            DataRow _row2 = _dt2.NewRow();
             _row2["Nome"] = "";
 
             cboRSMotorista.DataSource = _dt2;
             cboRSMotorista.ValueMember = "ID";
             cboRSMotorista.DisplayMember = "Nome";
+        }
+
+        public void preencheComboTabEmpresa()
+        {
+            DataTable _dt4 = new DataTable();
+            _dt4 = drv.getAllMotoristas();
+            DataRow _row4 = _dt4.NewRow();
+            _row4["Nome"] = "";
+
+            cboMADM.DataSource = _dt4;
+            cboMADM.ValueMember = "ID";
+            cboMADM.DisplayMember = "Nome";
         }
 
         private void btnSalvarNumero_Click(object sender, EventArgs e)

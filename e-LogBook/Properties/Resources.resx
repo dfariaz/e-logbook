@@ -127,6 +127,9 @@
   <data name="3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btnMaximizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnMaximizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnListar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnListar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,6 +150,9 @@
   </data>
   <data name="Cancelada" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancelada.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LogoZH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoZH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnFretesM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnFretesM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,9 +214,6 @@
   <data name="Carregado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Carregado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Go" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="btnLogBook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnLogBook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -223,8 +226,8 @@
   <data name="beep_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\beep-24.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LogoZH" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LogoZH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogoELogBook_128x128_RED1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoELogBook 128x128 RED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,7 +256,7 @@
   <data name="2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnMaximizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnMaximizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="209x48-doar-assina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\209x48-doar-assina.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

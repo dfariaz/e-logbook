@@ -18,8 +18,6 @@ namespace e_LogBook.DAO
          * Class BDConnection
          * 
          * Classe de conexão com o banco de dados
-         * zeroh537_master | @Logbook
-         * zeroh537_LogBook_Teste
          */
 
         private string connectionString = string.Empty;

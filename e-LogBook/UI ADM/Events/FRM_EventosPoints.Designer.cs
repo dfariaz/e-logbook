@@ -1,6 +1,6 @@
-﻿namespace e_LogBook.UI_USER.LogBook
+﻿namespace e_LogBook.UI_ADM
 {
-    partial class FRM_LogBook
+    partial class FRM_EventosPoints
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_LogBook));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_EventosPoints));
             this.panelTitulo = new System.Windows.Forms.Panel();
-            this.btnParar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnIniciar = new System.Windows.Forms.Button();
-            this.lbl2 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.panelSysTitulo = new System.Windows.Forms.Panel();
             this.lblSysTitulo = new System.Windows.Forms.Label();
-            this.TimerAvisoSonoro = new System.Windows.Forms.Timer(this.components);
+            this.dgvPontos = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ide = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panelTitulo.SuspendLayout();
             this.panelSysTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPontos)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitulo
@@ -49,28 +51,13 @@
             this.panelTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelTitulo.BackColor = System.Drawing.Color.SteelBlue;
-            this.panelTitulo.Controls.Add(this.btnParar);
             this.panelTitulo.Controls.Add(this.btnMinimizar);
             this.panelTitulo.Controls.Add(this.button1);
+            this.panelTitulo.Controls.Add(this.lblTitulo);
             this.panelTitulo.Location = new System.Drawing.Point(189, 0);
             this.panelTitulo.Name = "panelTitulo";
-            this.panelTitulo.Size = new System.Drawing.Size(313, 54);
-            this.panelTitulo.TabIndex = 7;
-            this.panelTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FRM_LogBook_MouseDown);
-            this.panelTitulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FRM_LogBook_MouseMove);
-            // 
-            // btnParar
-            // 
-            this.btnParar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnParar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnParar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParar.Location = new System.Drawing.Point(51, 10);
-            this.btnParar.Name = "btnParar";
-            this.btnParar.Size = new System.Drawing.Size(39, 34);
-            this.btnParar.TabIndex = 27;
-            this.btnParar.Text = "Parar LogBook";
-            this.btnParar.UseVisualStyleBackColor = true;
-            this.btnParar.Visible = false;
+            this.panelTitulo.Size = new System.Drawing.Size(389, 54);
+            this.panelTitulo.TabIndex = 11;
             // 
             // btnMinimizar
             // 
@@ -81,10 +68,10 @@
             this.btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimizar.Location = new System.Drawing.Point(226, 12);
+            this.btnMinimizar.Location = new System.Drawing.Point(306, 12);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(30, 30);
-            this.btnMinimizar.TabIndex = 5;
+            this.btnMinimizar.TabIndex = 8;
             this.btnMinimizar.UseVisualStyleBackColor = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
@@ -97,36 +84,23 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(263, 12);
+            this.button1.Location = new System.Drawing.Point(342, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnIniciar
+            // lblTitulo
             // 
-            this.btnIniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnIniciar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIniciar.Location = new System.Drawing.Point(418, 63);
-            this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(64, 34);
-            this.btnIniciar.TabIndex = 26;
-            this.btnIniciar.Text = "Play";
-            this.btnIniciar.UseVisualStyleBackColor = true;
-            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
-            // 
-            // lbl2
-            // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.Font = new System.Drawing.Font("Calibri Light", 18F);
-            this.lbl2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lbl2.Location = new System.Drawing.Point(12, 68);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(200, 29);
-            this.lbl2.TabIndex = 0;
-            this.lbl2.Text = "LogBook Eletrônico";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Calibri Light", 18F);
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblTitulo.Location = new System.Drawing.Point(10, 10);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(89, 29);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Eventos";
             // 
             // panelSysTitulo
             // 
@@ -135,7 +109,7 @@
             this.panelSysTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelSysTitulo.Name = "panelSysTitulo";
             this.panelSysTitulo.Size = new System.Drawing.Size(189, 54);
-            this.panelSysTitulo.TabIndex = 6;
+            this.panelSysTitulo.TabIndex = 10;
             // 
             // lblSysTitulo
             // 
@@ -148,47 +122,91 @@
             this.lblSysTitulo.TabIndex = 0;
             this.lblSysTitulo.Text = "e-LogBook";
             // 
-            // TimerAvisoSonoro
+            // dgvPontos
             // 
-            this.TimerAvisoSonoro.Enabled = true;
-            this.TimerAvisoSonoro.Interval = 2000;
-            this.TimerAvisoSonoro.Tick += new System.EventHandler(this.TimerAvisoSonoro_Tick);
+            this.dgvPontos.AllowUserToAddRows = false;
+            this.dgvPontos.AllowUserToDeleteRows = false;
+            this.dgvPontos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPontos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvPontos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPontos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPontos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.nome,
+            this.status,
+            this.ide});
+            this.dgvPontos.Location = new System.Drawing.Point(12, 69);
+            this.dgvPontos.Name = "dgvPontos";
+            this.dgvPontos.ReadOnly = true;
+            this.dgvPontos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPontos.Size = new System.Drawing.Size(549, 323);
+            this.dgvPontos.TabIndex = 12;
+            this.dgvPontos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPontos_CellDoubleClick);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "ID";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "Nome";
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "Status";
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
+            // ide
+            // 
+            this.ide.DataPropertyName = "IdEvento";
+            this.ide.HeaderText = "ideventos";
+            this.ide.Name = "ide";
+            this.ide.ReadOnly = true;
+            this.ide.Visible = false;
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Calibri Light", 18F);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(33, 97);
+            this.label1.Location = new System.Drawing.Point(12, 402);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(449, 185);
-            this.label1.TabIndex = 8;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.label1.Size = new System.Drawing.Size(422, 19);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "* Clique duas vezes na linha correspondente para dar os pontos";
             // 
-            // FRM_LogBook
+            // FRM_EventosPoints
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(501, 291);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(575, 440);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvPontos);
             this.Controls.Add(this.panelTitulo);
-            this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.panelSysTitulo);
-            this.Controls.Add(this.lbl2);
-            this.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FRM_LogBook";
+            this.Name = "FRM_EventosPoints";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LogBook";
-            this.Load += new System.EventHandler(this.FRM_LogBook_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FRM_LogBook_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FRM_LogBook_MouseMove);
+            this.Text = "Pontos Evento";
+            this.Load += new System.EventHandler(this.FRM_EventosPoints_Load);
             this.panelTitulo.ResumeLayout(false);
+            this.panelTitulo.PerformLayout();
             this.panelSysTitulo.ResumeLayout(false);
             this.panelSysTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPontos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,14 +215,16 @@
         #endregion
 
         private System.Windows.Forms.Panel panelTitulo;
+        private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lbl2;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panelSysTitulo;
         private System.Windows.Forms.Label lblSysTitulo;
-        private System.Windows.Forms.Button btnMinimizar;
-        private System.Windows.Forms.Timer TimerAvisoSonoro;
-        private System.Windows.Forms.Button btnIniciar;
-        private System.Windows.Forms.Button btnParar;
+        private System.Windows.Forms.DataGridView dgvPontos;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ide;
     }
 }

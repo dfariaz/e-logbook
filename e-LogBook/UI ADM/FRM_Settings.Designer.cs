@@ -81,6 +81,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tabManutencao = new System.Windows.Forms.TabPage();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -90,18 +98,37 @@
             this.btnValida = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tabEmpresa = new System.Windows.Forms.TabPage();
+            this.label40 = new System.Windows.Forms.Label();
+            this.btnMADM = new System.Windows.Forms.Button();
+            this.label39 = new System.Windows.Forms.Label();
+            this.cboMADM = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtSlots = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.dgvEmpresa = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.responsavel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.slots = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtResp = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSalvarEmpresa = new System.Windows.Forms.Button();
+            this.tabEventos = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dgvEventos = new System.Windows.Forms.DataGridView();
+            this.idEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.criadoPor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditarEvento = new System.Windows.Forms.Button();
+            this.btnCriarEvento = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
             this.folderBrowserDialogets = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnDADM = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             this.panelSysTitulo.SuspendLayout();
@@ -116,6 +143,8 @@
             this.tabManutencao.SuspendLayout();
             this.tabEmpresa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpresa)).BeginInit();
+            this.tabEventos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -306,6 +335,7 @@
             this.tabControlConfig.Controls.Add(this.tabEmpty);
             this.tabControlConfig.Controls.Add(this.tabManutencao);
             this.tabControlConfig.Controls.Add(this.tabEmpresa);
+            this.tabControlConfig.Controls.Add(this.tabEventos);
             this.tabControlConfig.Location = new System.Drawing.Point(188, 25);
             this.tabControlConfig.Multiline = true;
             this.tabControlConfig.Name = "tabControlConfig";
@@ -757,6 +787,14 @@
             // 
             // tabManutencao
             // 
+            this.tabManutencao.Controls.Add(this.label38);
+            this.tabManutencao.Controls.Add(this.label37);
+            this.tabManutencao.Controls.Add(this.label36);
+            this.tabManutencao.Controls.Add(this.label35);
+            this.tabManutencao.Controls.Add(this.label34);
+            this.tabManutencao.Controls.Add(this.label33);
+            this.tabManutencao.Controls.Add(this.label32);
+            this.tabManutencao.Controls.Add(this.label31);
             this.tabManutencao.Controls.Add(this.label27);
             this.tabManutencao.Controls.Add(this.label26);
             this.tabManutencao.Controls.Add(this.label25);
@@ -772,6 +810,81 @@
             this.tabManutencao.TabIndex = 3;
             this.tabManutencao.Text = "Manutenção";
             this.tabManutencao.UseVisualStyleBackColor = true;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(445, 284);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(93, 19);
+            this.label38.TabIndex = 15;
+            this.label38.Text = "Kurupira 102";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(445, 259);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(78, 19);
+            this.label37.TabIndex = 14;
+            this.label37.Text = "Freoni 101";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(426, 230);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(114, 19);
+            this.label36.TabIndex = 13;
+            this.label36.Text = "Master Admin";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(274, 384);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(91, 19);
+            this.label35.TabIndex = 12;
+            this.label35.Text = "Pombo  - FTT";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(274, 363);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(186, 19);
+            this.label34.TabIndex = 11;
+            this.label34.Text = "Wellington 192  - Zero Hora";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(242, 315);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(101, 19);
+            this.label33.TabIndex = 10;
+            this.label33.Text = "Beta Testers";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(274, 342);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(152, 19);
+            this.label32.TabIndex = 9;
+            this.label32.Text = "Lucas 113  - Zero Hora";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(11, 315);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(148, 19);
+            this.label31.TabIndex = 8;
+            this.label31.Text = "Agradecimentos à:";
             // 
             // label27
             // 
@@ -795,7 +908,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(39, 282);
+            this.label25.Location = new System.Drawing.Point(39, 342);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(129, 19);
             this.label25.TabIndex = 5;
@@ -859,6 +972,14 @@
             // 
             // tabEmpresa
             // 
+            this.tabEmpresa.Controls.Add(this.btnDADM);
+            this.tabEmpresa.Controls.Add(this.label40);
+            this.tabEmpresa.Controls.Add(this.btnMADM);
+            this.tabEmpresa.Controls.Add(this.label39);
+            this.tabEmpresa.Controls.Add(this.cboMADM);
+            this.tabEmpresa.Controls.Add(this.label30);
+            this.tabEmpresa.Controls.Add(this.txtSlots);
+            this.tabEmpresa.Controls.Add(this.label29);
             this.tabEmpresa.Controls.Add(this.dgvEmpresa);
             this.tabEmpresa.Controls.Add(this.txtResp);
             this.tabEmpresa.Controls.Add(this.label8);
@@ -874,6 +995,82 @@
             this.tabEmpresa.Text = "Empresas";
             this.tabEmpresa.UseVisualStyleBackColor = true;
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.label40.ForeColor = System.Drawing.Color.DarkRed;
+            this.label40.Location = new System.Drawing.Point(18, 346);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(96, 19);
+            this.label40.TabIndex = 28;
+            this.label40.Text = "Atribuir ADM";
+            // 
+            // btnMADM
+            // 
+            this.btnMADM.FlatAppearance.BorderSize = 0;
+            this.btnMADM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnMADM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnMADM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMADM.Image = global::e_LogBook.Properties.Resources.btnSalvarNew;
+            this.btnMADM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMADM.Location = new System.Drawing.Point(333, 375);
+            this.btnMADM.Name = "btnMADM";
+            this.btnMADM.Size = new System.Drawing.Size(103, 27);
+            this.btnMADM.TabIndex = 26;
+            this.btnMADM.Text = "Atribuir";
+            this.btnMADM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMADM.UseVisualStyleBackColor = true;
+            this.btnMADM.Click += new System.EventHandler(this.btnMADM_Click);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(18, 378);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(77, 19);
+            this.label39.TabIndex = 27;
+            this.label39.Text = "Motorista:";
+            // 
+            // cboMADM
+            // 
+            this.cboMADM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMADM.FormattingEnabled = true;
+            this.cboMADM.Items.AddRange(new object[] {
+            "Mês",
+            "Ano"});
+            this.cboMADM.Location = new System.Drawing.Point(101, 375);
+            this.cboMADM.Name = "cboMADM";
+            this.cboMADM.Size = new System.Drawing.Size(217, 27);
+            this.cboMADM.TabIndex = 25;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.label30.ForeColor = System.Drawing.Color.DarkRed;
+            this.label30.Location = new System.Drawing.Point(18, 113);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(431, 19);
+            this.label30.TabIndex = 24;
+            this.label30.Text = "* Clique duas vezes na linha correspondente para alterar os slots";
+            // 
+            // txtSlots
+            // 
+            this.txtSlots.Location = new System.Drawing.Point(483, 60);
+            this.txtSlots.Name = "txtSlots";
+            this.txtSlots.Size = new System.Drawing.Size(120, 27);
+            this.txtSlots.TabIndex = 23;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(480, 37);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(43, 19);
+            this.label29.TabIndex = 22;
+            this.label29.Text = "Slots:";
+            // 
             // dgvEmpresa
             // 
             this.dgvEmpresa.AllowUserToAddRows = false;
@@ -887,12 +1084,15 @@
             this.id,
             this.nome,
             this.responsavel,
-            this.data});
-            this.dgvEmpresa.Location = new System.Drawing.Point(17, 106);
+            this.data,
+            this.slots});
+            this.dgvEmpresa.Location = new System.Drawing.Point(17, 134);
             this.dgvEmpresa.Name = "dgvEmpresa";
             this.dgvEmpresa.ReadOnly = true;
-            this.dgvEmpresa.Size = new System.Drawing.Size(567, 303);
+            this.dgvEmpresa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmpresa.Size = new System.Drawing.Size(586, 199);
             this.dgvEmpresa.TabIndex = 21;
+            this.dgvEmpresa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpresa_CellDoubleClick);
             // 
             // id
             // 
@@ -921,6 +1121,13 @@
             this.data.HeaderText = "Data Criação";
             this.data.Name = "data";
             this.data.ReadOnly = true;
+            // 
+            // slots
+            // 
+            this.slots.DataPropertyName = "LimiteUsers";
+            this.slots.HeaderText = "Slots";
+            this.slots.Name = "slots";
+            this.slots.ReadOnly = true;
             // 
             // txtResp
             // 
@@ -972,7 +1179,7 @@
             this.btnSalvarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvarEmpresa.Image = global::e_LogBook.Properties.Resources.btnSalvarNew;
             this.btnSalvarEmpresa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarEmpresa.Location = new System.Drawing.Point(479, 48);
+            this.btnSalvarEmpresa.Location = new System.Drawing.Point(497, 93);
             this.btnSalvarEmpresa.Name = "btnSalvarEmpresa";
             this.btnSalvarEmpresa.Size = new System.Drawing.Size(106, 39);
             this.btnSalvarEmpresa.TabIndex = 20;
@@ -980,6 +1187,140 @@
             this.btnSalvarEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarEmpresa.UseVisualStyleBackColor = true;
             this.btnSalvarEmpresa.Click += new System.EventHandler(this.btnSalvarEmpresa_Click);
+            // 
+            // tabEventos
+            // 
+            this.tabEventos.Controls.Add(this.button2);
+            this.tabEventos.Controls.Add(this.dgvEventos);
+            this.tabEventos.Controls.Add(this.btnEditarEvento);
+            this.tabEventos.Controls.Add(this.btnCriarEvento);
+            this.tabEventos.Controls.Add(this.label28);
+            this.tabEventos.Location = new System.Drawing.Point(4, 28);
+            this.tabEventos.Name = "tabEventos";
+            this.tabEventos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEventos.Size = new System.Drawing.Size(612, 427);
+            this.tabEventos.TabIndex = 5;
+            this.tabEventos.Text = "tabEventos";
+            this.tabEventos.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = global::e_LogBook.Properties.Resources.btnSalvarNew;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(481, 31);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 39);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "Pontuação";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // dgvEventos
+            // 
+            this.dgvEventos.AllowUserToAddRows = false;
+            this.dgvEventos.AllowUserToDeleteRows = false;
+            this.dgvEventos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEventos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idEvento,
+            this.nomeEvento,
+            this.dataEvento,
+            this.criadoPor});
+            this.dgvEventos.Location = new System.Drawing.Point(11, 76);
+            this.dgvEventos.Name = "dgvEventos";
+            this.dgvEventos.ReadOnly = true;
+            this.dgvEventos.Size = new System.Drawing.Size(592, 342);
+            this.dgvEventos.TabIndex = 23;
+            // 
+            // idEvento
+            // 
+            this.idEvento.HeaderText = "ID";
+            this.idEvento.Name = "idEvento";
+            this.idEvento.ReadOnly = true;
+            // 
+            // nomeEvento
+            // 
+            this.nomeEvento.HeaderText = "Descrição";
+            this.nomeEvento.Name = "nomeEvento";
+            this.nomeEvento.ReadOnly = true;
+            // 
+            // dataEvento
+            // 
+            this.dataEvento.HeaderText = "Data";
+            this.dataEvento.Name = "dataEvento";
+            this.dataEvento.ReadOnly = true;
+            // 
+            // criadoPor
+            // 
+            this.criadoPor.HeaderText = "Criado Por";
+            this.criadoPor.Name = "criadoPor";
+            this.criadoPor.ReadOnly = true;
+            // 
+            // btnEditarEvento
+            // 
+            this.btnEditarEvento.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnEditarEvento.FlatAppearance.BorderSize = 0;
+            this.btnEditarEvento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEditarEvento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEditarEvento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarEvento.Image = global::e_LogBook.Properties.Resources.btnSalvarNew;
+            this.btnEditarEvento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarEvento.Location = new System.Drawing.Point(138, 30);
+            this.btnEditarEvento.Name = "btnEditarEvento";
+            this.btnEditarEvento.Size = new System.Drawing.Size(106, 39);
+            this.btnEditarEvento.TabIndex = 22;
+            this.btnEditarEvento.Text = "Editar";
+            this.btnEditarEvento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditarEvento.UseVisualStyleBackColor = true;
+            // 
+            // btnCriarEvento
+            // 
+            this.btnCriarEvento.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnCriarEvento.FlatAppearance.BorderSize = 0;
+            this.btnCriarEvento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCriarEvento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCriarEvento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCriarEvento.Image = global::e_LogBook.Properties.Resources.btnSalvarNew;
+            this.btnCriarEvento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCriarEvento.Location = new System.Drawing.Point(11, 30);
+            this.btnCriarEvento.Name = "btnCriarEvento";
+            this.btnCriarEvento.Size = new System.Drawing.Size(106, 39);
+            this.btnCriarEvento.TabIndex = 21;
+            this.btnCriarEvento.Text = "Novo";
+            this.btnCriarEvento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCriarEvento.UseVisualStyleBackColor = true;
+            this.btnCriarEvento.Click += new System.EventHandler(this.btnCriarEvento_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(7, 8);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 19);
+            this.label28.TabIndex = 16;
+            this.label28.Text = "Eventos";
+            // 
+            // btnDADM
+            // 
+            this.btnDADM.FlatAppearance.BorderSize = 0;
+            this.btnDADM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDADM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDADM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDADM.Image = global::e_LogBook.Properties.Resources.btnSalvarNew;
+            this.btnDADM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDADM.Location = new System.Drawing.Point(464, 374);
+            this.btnDADM.Name = "btnDADM";
+            this.btnDADM.Size = new System.Drawing.Size(123, 27);
+            this.btnDADM.TabIndex = 29;
+            this.btnDADM.Text = "Desatribuir";
+            this.btnDADM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDADM.UseVisualStyleBackColor = true;
+            this.btnDADM.Click += new System.EventHandler(this.btnDADM_Click);
             // 
             // FRM_Settings
             // 
@@ -1025,6 +1366,9 @@
             this.tabEmpresa.ResumeLayout(false);
             this.tabEmpresa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpresa)).EndInit();
+            this.tabEventos.ResumeLayout(false);
+            this.tabEventos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1068,10 +1412,6 @@
         private System.Windows.Forms.Button btnValida;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogets;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn responsavel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.ComboBox cboRanking;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1104,5 +1444,36 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TabPage tabEventos;
+        private System.Windows.Forms.Button btnEditarEvento;
+        private System.Windows.Forms.Button btnCriarEvento;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.DataGridView dgvEventos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idEvento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeEvento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataEvento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn criadoPor;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtSlots;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn responsavel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn slots;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button btnMADM;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.ComboBox cboMADM;
+        private System.Windows.Forms.Button btnDADM;
     }
 }

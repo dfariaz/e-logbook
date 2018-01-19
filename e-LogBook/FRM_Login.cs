@@ -125,6 +125,8 @@ namespace e_LogBook
             {
                 MessageBox.Show(ex.HResult.ToString(), "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            txtSenha.Enabled = true;
+            btnEntrar.Enabled = true;
         }
 
         private void AutoUpdater_ApplicationExitEvent()

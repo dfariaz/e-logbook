@@ -121,8 +121,10 @@ namespace e_LogBook.UI_ADM.Drivers
 
         private void infoMotorista(int id)
         {
+            int mes = Convert.ToInt32(DateTime.Now.Month);
+            int ano = Convert.ToInt32(DateTime.Now.Year);
             DataTable _dt = new DataTable();
-            _dt = dft.getFreightsCount(id);
+            _dt = dft.getFreightsCount(id, mes, ano);
             foreach(DataRow _dr in _dt.Rows)
             {
                 lblPontosAno.Text = _dr["PontosAno"].ToString();

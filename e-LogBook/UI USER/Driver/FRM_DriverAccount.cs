@@ -239,8 +239,10 @@ namespace e_LogBook.UI_USER.Driver
 
         private void getPoints(int id)
         {
+            int mes = Convert.ToInt32(DateTime.Now.Month);
+            int ano = Convert.ToInt32(DateTime.Now.Year);
             DataTable _dt = new DataTable();
-            _dt = dft.getFreightsCount(id);
+            _dt = dft.getFreightsCount(id, mes, ano);
             foreach (DataRow dr in _dt.Rows)
             {
                 lblCountFretes.Text = dr["CFretes"].ToString();

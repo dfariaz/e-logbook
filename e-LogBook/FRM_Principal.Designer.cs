@@ -43,6 +43,7 @@
             this.lblNomeMotorista = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnEventos = new System.Windows.Forms.Button();
             this.btnConfiguracoes = new System.Windows.Forms.Button();
             this.btnEmpresas = new System.Windows.Forms.Button();
             this.btnInfo = new System.Windows.Forms.Button();
@@ -57,6 +58,9 @@
             this.kmrodado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSync = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnDoar = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             this.panelSysTitulo.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -219,6 +223,7 @@
             this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelMenu.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelMenu.Controls.Add(this.btnEventos);
             this.panelMenu.Controls.Add(this.btnConfiguracoes);
             this.panelMenu.Controls.Add(this.btnEmpresas);
             this.panelMenu.Controls.Add(this.btnInfo);
@@ -228,6 +233,25 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(189, 432);
             this.panelMenu.TabIndex = 9;
+            // 
+            // btnEventos
+            // 
+            this.btnEventos.BackColor = System.Drawing.Color.Transparent;
+            this.btnEventos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEventos.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEventos.FlatAppearance.BorderSize = 0;
+            this.btnEventos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnEventos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnEventos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEventos.Font = new System.Drawing.Font("Calibri Light", 16F);
+            this.btnEventos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEventos.Location = new System.Drawing.Point(13, 302);
+            this.btnEventos.Name = "btnEventos";
+            this.btnEventos.Size = new System.Drawing.Size(165, 49);
+            this.btnEventos.TabIndex = 6;
+            this.btnEventos.Text = "Eventos";
+            this.btnEventos.UseVisualStyleBackColor = false;
+            this.btnEventos.Click += new System.EventHandler(this.btnEventos_Click);
             // 
             // btnConfiguracoes
             // 
@@ -332,9 +356,9 @@
             this.dgvLogBook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvLogBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLogBook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLogBook.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvLogBook.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvLogBook.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvLogBook.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLogBook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLogBook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -350,7 +374,7 @@
             this.dgvLogBook.Name = "dgvLogBook";
             this.dgvLogBook.ReadOnly = true;
             this.dgvLogBook.RowHeadersVisible = false;
-            this.dgvLogBook.Size = new System.Drawing.Size(723, 351);
+            this.dgvLogBook.Size = new System.Drawing.Size(723, 255);
             this.dgvLogBook.TabIndex = 12;
             // 
             // id
@@ -360,7 +384,6 @@
             this.id.Name = "id";
             this.id.ReadOnly = true;
             this.id.Visible = false;
-            this.id.Width = 29;
             // 
             // data
             // 
@@ -369,7 +392,6 @@
             this.data.Name = "data";
             this.data.ReadOnly = true;
             this.data.Visible = false;
-            this.data.Width = 44;
             // 
             // cidadeinicial
             // 
@@ -377,7 +399,6 @@
             this.cidadeinicial.HeaderText = "Cidade Inicial";
             this.cidadeinicial.Name = "cidadeinicial";
             this.cidadeinicial.ReadOnly = true;
-            this.cidadeinicial.Width = 122;
             // 
             // cidadedestino
             // 
@@ -385,7 +406,6 @@
             this.cidadedestino.HeaderText = "Cidade Destino";
             this.cidadedestino.Name = "cidadedestino";
             this.cidadedestino.ReadOnly = true;
-            this.cidadedestino.Width = 132;
             // 
             // carga
             // 
@@ -393,7 +413,6 @@
             this.carga.HeaderText = "Carga";
             this.carga.Name = "carga";
             this.carga.ReadOnly = true;
-            this.carga.Width = 73;
             // 
             // kmrodado
             // 
@@ -401,7 +420,6 @@
             this.kmrodado.HeaderText = "KM Rodado";
             this.kmrodado.Name = "kmrodado";
             this.kmrodado.ReadOnly = true;
-            this.kmrodado.Width = 109;
             // 
             // status
             // 
@@ -409,7 +427,6 @@
             this.status.HeaderText = "Status";
             this.status.Name = "status";
             this.status.ReadOnly = true;
-            this.status.Width = 73;
             // 
             // btnSync
             // 
@@ -428,6 +445,48 @@
             this.btnSync.UseVisualStyleBackColor = true;
             this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.label2.Location = new System.Drawing.Point(224, 392);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(442, 70);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "A Zero Hora é uma organização independente sem fins lucrativos. Nosso site e apli" +
+    "cativo são mantidos por nossa administração! Gostou do aplicativo? Nos ajude. Fa" +
+    "ça uma doação: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label3.Location = new System.Drawing.Point(253, 417);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 19);
+            this.label3.TabIndex = 15;
+            this.label3.Visible = false;
+            // 
+            // btnDoar
+            // 
+            this.btnDoar.BackColor = System.Drawing.Color.Transparent;
+            this.btnDoar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDoar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDoar.FlatAppearance.BorderSize = 0;
+            this.btnDoar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnDoar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnDoar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDoar.Font = new System.Drawing.Font("Calibri Light", 16F);
+            this.btnDoar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDoar.Image = global::e_LogBook.Properties.Resources._209x48_doar_assina;
+            this.btnDoar.Location = new System.Drawing.Point(687, 401);
+            this.btnDoar.Name = "btnDoar";
+            this.btnDoar.Size = new System.Drawing.Size(214, 49);
+            this.btnDoar.TabIndex = 7;
+            this.btnDoar.UseVisualStyleBackColor = false;
+            this.btnDoar.Click += new System.EventHandler(this.btnDoar_Click);
+            // 
             // FRM_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -435,6 +494,9 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(949, 483);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDoar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSync);
             this.Controls.Add(this.dgvLogBook);
             this.Controls.Add(this.lblVERSAOBETA);
@@ -492,6 +554,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kmrodado;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.Button btnSync;
+        private System.Windows.Forms.Button btnEventos;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnDoar;
     }
 }
 

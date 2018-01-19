@@ -37,10 +37,29 @@ namespace e_LogBook.Controller
             return dft.select(_campos, _comandos);
         }
 
-        public DataTable getFreightsCount(int id)
+        public string setADM(int id, int up)
+        {
+            string _tabela = "Motorista";
+            string _comandos;
+            if (up == 0)
+                _comandos = "Grupo = 1";
+            else
+                _comandos = "Grupo = 2";
+            string _condicao = "ID = " + id;
+            return dft.Update(_tabela, _comandos, _condicao);
+        }
+
+        public DataTable getAllMotoristas()
+        {
+            string _campos = "ID, Nome";
+            string _comandos = "Motorista";
+            return dft.select(_campos, _comandos);
+        }
+
+        public DataTable getFreightsCount(int id, int mes, int ano)
         {
             string _campos = "Count(f.id) as CFretes, r.PontosMes as PontosMes, r.PontosAno as PontosAno";
-            string _comandos = "Frete f INNER JOIN Ranking r ON(r.IdMotorista = f.IDMotorista) WHERE f.IdMotorista = " + id + "";
+            string _comandos = "Frete f INNER JOIN Ranking r ON(r.IdMotorista = f.IDMotorista) WHERE f.IdMotorista = " + id + " AND r.Mes = '"+mes+"' AND r.Ano = '"+ano+"'";
             return dft.select(_campos, _comandos);
         }
 

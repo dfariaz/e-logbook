@@ -44,10 +44,6 @@
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datacadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panelSysTitulo.SuspendLayout();
             this.panelTitulo.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -201,19 +197,20 @@
             this.dgvMotoristas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMotoristas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMotoristas.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvMotoristas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMotoristas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMotoristas.ColumnHeadersVisible = false;
             this.dgvMotoristas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.nome,
             this.status,
             this.datacadastro});
-            this.dgvMotoristas.Location = new System.Drawing.Point(202, 95);
+            this.dgvMotoristas.Location = new System.Drawing.Point(202, 59);
             this.dgvMotoristas.Name = "dgvMotoristas";
             this.dgvMotoristas.ReadOnly = true;
             this.dgvMotoristas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMotoristas.Size = new System.Drawing.Size(592, 374);
+            this.dgvMotoristas.Size = new System.Drawing.Size(592, 410);
             this.dgvMotoristas.TabIndex = 4;
             // 
             // id
@@ -222,7 +219,6 @@
             this.id.HeaderText = "ID";
             this.id.Name = "id";
             this.id.ReadOnly = true;
-            this.id.Width = 50;
             // 
             // nome
             // 
@@ -230,7 +226,6 @@
             this.nome.HeaderText = "Nome";
             this.nome.Name = "nome";
             this.nome.ReadOnly = true;
-            this.nome.Width = 250;
             // 
             // status
             // 
@@ -238,7 +233,6 @@
             this.status.HeaderText = "Status";
             this.status.Name = "status";
             this.status.ReadOnly = true;
-            this.status.Width = 80;
             // 
             // datacadastro
             // 
@@ -246,43 +240,6 @@
             this.datacadastro.HeaderText = "Data de Cadastro";
             this.datacadastro.Name = "datacadastro";
             this.datacadastro.ReadOnly = true;
-            this.datacadastro.Width = 150;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(246, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 19);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "ID";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(295, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 19);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Nome";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(542, 70);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 19);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Status";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(624, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 19);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Data de Cadastro";
             // 
             // FRM_DriverControl
             // 
@@ -291,10 +248,6 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(807, 483);
             this.ControlBox = false;
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvMotoristas);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelTitulo);
@@ -316,7 +269,6 @@
             this.panelMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMotoristas)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -331,10 +283,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.DataGridView dgvMotoristas;
         private System.Windows.Forms.Label lblTituloMenu;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;

@@ -28,10 +28,12 @@ namespace e_LogBook
         }
 
         public string public_login { get; set; }
-        private int empresa_id, usuario_id, admin, acmClick = 0;
+        private int empresa_id, usuario_id, admin, acmClick = 0, acm = 0;
         private string versao = "BETA";
-        private string nomeUsuario, dataUsuario, horaUsuario, NomeTabela;
-        Thread TS3;
+        private string nomeUsuario, /*dataUsuario, horaUsuario, NomeTabela,*/ _resultado;
+        private string serverP, portP;
+
+        //Thread TS3;
 
         Optional opt = new Optional();
         Defaults drv = new Defaults();
@@ -59,14 +61,16 @@ namespace e_LogBook
                 btnControle.Visible = false;
                 btnConfiguracoes.Visible = false;
                 lblAdmin.Visible = false;
+                btnEventos.Visible = false;
             }
             //Salva as cores no settings
             opt.saveSettingsColors(empresa_id);
             changeColors();
-
-            TS3 = new Thread(new ThreadStart(TSOpen));
-            TS3.Start();
+            getServerTS();
             preencheDGV();
+            //TS3 = new Thread(new ThreadStart(TSOpen));
+            //TS3.Start();
+            
             //criaTabelaTemporaria();
         }
 
@@ -113,7 +117,7 @@ namespace e_LogBook
             {
                 //deletaTabelaTemporaria();
                 
-                TS3.Abort();
+                //TS3.Abort();
                 Application.Exit();
             }
         }
@@ -140,10 +144,10 @@ namespace e_LogBook
             FRM_LogBook log = new FRM_LogBook();
             log.LMotorista = usuario_id;
             log.LEmpresa = empresa_id;
+            log.server = serverP;
+            log.port = portP;
             if(log.ShowDialog() == DialogResult.Cancel)
-            {
                 preencheDGV();
-            }
         }
 
         private void preencheDGV()
@@ -161,9 +165,15 @@ namespace e_LogBook
             drv.deleteLite("dadosLocais", condicao);
         }
 
+        private void deleteLocalRegistroAll()
+        {
+            drv.deleteLiteAll("dadosLocais");
+        }
+
         private void btnEmpresas_Click(object sender, EventArgs e)
         {
             FRM_Company com = new FRM_Company();
+            com.public_login = usuario_id;
             com.Show();
         }
 
@@ -204,14 +214,34 @@ namespace e_LogBook
             }
         }
 
+        private void btnEventos_Click(object sender, EventArgs e)
+        {
+            if (empresa_id == 1)
+            {
+                FRM_Eventos even = new FRM_Eventos();
+                even.public_login = public_login;
+                even.Show();
+            }
+            else
+                MessageBox.Show("Disponivel apenas para administradores da Zero Hora!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnDoar_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://pag.ae/bftkbHS");
+            Process.Start(sInfo);
+        }
+
         private void btnSync_Click(object sender, EventArgs e)
         {
+            acm = 0;
             if (MessageBox.Show("Deseja sincronizar os dados?", "Questão", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 string comandos = "dadosLocais ORDER BY ID DESC";
                 DataTable _dt = drv.selectLite("*", comandos);
                 if (_dt.Rows.Count != 0)
                 {
+                    acmClick = _dt.Rows.Count;
                     foreach (DataRow dr in _dt.Rows)
                     {
                         if (dr["Status"].ToString() != "Enviado")
@@ -222,27 +252,60 @@ namespace e_LogBook
                             double pontos = Convert.ToDouble(dr["Pontuacao"].ToString());
                             int idMotoristas = Convert.ToInt32(dr["IdMotorista"].ToString());
                             int idEmpresas = Convert.ToInt32(dr["IdEmpresa"].ToString());
-                            string _resultado = drvr.saveFreight(kms, danos, pontos, dr["Carga"].ToString(), dr["Cidadeinicial"].ToString(), dr["Cidadedestino"].ToString(), dr["Data"].ToString(), idMotoristas, idEmpresas);
+                            _resultado = drvr.saveFreight(kms, danos, pontos, dr["Carga"].ToString(), dr["Cidadeinicial"].ToString(), dr["Cidadedestino"].ToString(), dr["Data"].ToString(), idMotoristas, idEmpresas);
                             if (_resultado == "true")
                             {
+                                acm = acm + 1;
                                 deleteLocalRegistro(idDados);
-                                preencheDGV();
-                                MessageBox.Show("Dados sincronizados com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            else if (_resultado == "rankingFalse")
-                                MessageBox.Show("Ocorreu um erro ao tentar atualizar o ranking!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            else
-                                MessageBox.Show("Ocorreu um erro ao tentar sincronizar seus dados!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
-                            MessageBox.Show("Os dados já estão sincronizados!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        {
+                            _resultado = "Enviados";
+                            acm = acm + 1;
+                        }
                     }
+                    if (_resultado == "Enviados")
+                    {
+                        if (acmClick == acm)
+                        {
+                            deleteLocalRegistroAll();
+                            preencheDGV();
+                            MessageBox.Show("Os dados já foram sincronizados!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        if (_resultado == "true")
+                        {
+                            preencheDGV();
+                            MessageBox.Show("Dados sincronizados com sucesso!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (_resultado == "rankingFalse")
+                            MessageBox.Show("Ocorreu um erro ao tentar atualizar o ranking!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Ocorreu um erro ao tentar sincronizar seus dados!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não há dados para sincronizar!", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
+        
+        private void getServerTS()
+        {
+            DataTable _dt = opt.getTS(empresa_id);
 
-        private string server;
-        private string port;
+            foreach (DataRow _dr in _dt.Rows)
+            {
+                serverP = _dr["Servidor"].ToString();
+                portP = _dr["Porta"].ToString();
+            }
+        }
+
+        // Checagem antiga -- Desabilitada
         private bool checkTS(int ts3)
         {
             if (ts3 != 1)
@@ -251,15 +314,14 @@ namespace e_LogBook
 
                 foreach (DataRow _dr in _dt.Rows)
                 {
-                    server = _dr["Servidor"].ToString();
-                    port = _dr["Porta"].ToString();
+                    serverP = _dr["Servidor"].ToString();
+                    portP = _dr["Porta"].ToString();
                 }
                 if (Tools.checkConnection())
                 {
-                    preencheDGV();
-                    if (server != "192.168.0.1" && port != "2555")
+                    if (serverP != "192.168.0.1" && portP != "2555")
                     {
-                        Process.Start("ts3server://" + server + "?port=" + port + "");
+                        Process.Start("ts3server://" + serverP + "?port=" + portP + "");
                         return true;
                     }
                     else

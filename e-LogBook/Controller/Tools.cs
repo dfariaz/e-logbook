@@ -48,9 +48,7 @@ namespace e_LogBook.Controller
         public static bool VerificarETS2MP()
         {
             var saida = false;
-
             var processes = Process.GetProcesses();
-
             foreach (var item in processes)
             {
                 if (item.MainWindowTitle.Contains("Euro Truck Simulator 2 Multiplayer"))

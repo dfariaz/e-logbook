@@ -226,7 +226,7 @@ namespace e_LogBook.Controller
             double pontuacaoAno = pontuacao + ranking_POINTANO;
             var kmAno = km + ranking_KMANO;
 
-            string _condicao = "IdMotorista = " + idMotorista;
+            string _condicao = "IdMotorista = " + idMotorista + " AND Mes = '"+Mes+"' AND Ano = '"+Ano+"'";
             string updateRanking;
             if (ranking_POINTMES == 0 && ranking_POINTANO == 0 && ranking_KMMES == 0 && ranking_KMANO == 0)
                 updateRanking = dft.InsertRanking(_tabela, kmMes, kmAno, pontuacaoMes, pontuacaoAno, Mes, Ano, idEmpresa, idMotorista);
@@ -245,7 +245,7 @@ namespace e_LogBook.Controller
             int Mes = Convert.ToInt32(DateTime.Now.Month.ToString());
             if(tipo == 1)
             {
-                DataTable _dtMes = cll.KMMotoristaMes(id, Mes);
+                DataTable _dtMes = cll.KMMotoristaMes(id, Mes, Ano);
                 foreach(DataRow dr in _dtMes.Rows)
                 {
                     ranking_KMMES = Convert.ToDouble(dr["KMMes"].ToString());
@@ -320,9 +320,45 @@ namespace e_LogBook.Controller
         public string saveTS(int idEmpresa, string server, string port)
         {
             string _tabela = "TS_Server";
-            string _comandos = "Servidor = '" + server + "', Porta '" + port + "'";
+            string _comandos = "Servidor = '" + server + "', Porta = '" + port + "'";
             string _condicao = "IdEmpresa = " + idEmpresa;
             return dft.Update(_tabela, _comandos, _condicao);
+        }
+
+        public string saveEvento(int idEmpresa, string nome, string data, string saida, string destino, string hora, int idMotorista, int status, string obs, string img)
+        {
+            string _tabela = "Eventos";
+            string _comandos = "(Nome, Data, Saida, Destino, Hora, Status, Observacoes, IMG, IdMotorista, IdEmpresa) VALUES('"+nome+ "', '"+data+"','"+saida+"','"+destino+"','"+hora+"', "+status+", '"+obs+"', '"+img+"', "+idMotorista+","+ idEmpresa + ")";
+            return dft.Insert(_tabela, _comandos);
+        }
+
+        public string updateEvento(string nome, string data, string saida, string destino, string hora, int status, string obs, string img, int idevento)
+        {
+            string _tabela = "Eventos";
+            string _comandos = "Nome = '" + nome + "', Data = '" + data + "', Saida = '" + saida + "', Destino = '" + destino + "', Hora = '" + hora + "', Status = "+status+", Observacoes = '"+obs+"', IMG = '"+img+"'";
+            string _condicao = "ID = "+idevento;
+            return dft.Update(_tabela, _comandos, _condicao);
+        }
+
+        /*public string deleteEvento(int id)
+        {
+            string _tabela = "Eventos";
+            string _condicao = "ID = " + id;
+            return dft.Delete(_tabela, _condicao);
+        }*/
+
+        public DataTable getParametros(int id, string campo)
+        {
+            string _campos = ""+campo+"";
+            string _condicao = "Parametrizacao WHERE IdEmpresa = " + id + " AND " + campo + " = 1";
+            return dft.select(_campos, _condicao);
+        }
+
+        public DataTable getSpecificEmpresa(int id)
+        {
+            string _campos = "Nome";
+            string _condicao = "Empresa WHERE ID =" + id;
+            return dft.select(_campos, _condicao);
         }
     }
 }
